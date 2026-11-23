@@ -1,0 +1,3 @@
+[submodule ".agents/plugins/egm"]
+	path = .agents/plugins/egm
+	url = https://github.com/google/elephant-goldfish-model.git
