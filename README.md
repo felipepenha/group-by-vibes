@@ -1,5 +1,13 @@
 # group-by-vibes
 
+[![CI](https://img.shields.io/github/actions/workflow/status/felipepenha/group-by-vibes/ci.yml?branch=main&label=CI)](https://github.com/felipepenha/group-by-vibes/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![License: Apache-2.0](https://img.shields.io/github/license/felipepenha/group-by-vibes)](LICENSE)
+[![Core dependency: sqlglot only](https://img.shields.io/badge/deps-sqlglot%20only-2E7D32)](pyproject.toml)
+[![mypy: strict](https://img.shields.io/badge/mypy-strict-1f6feb)](pyproject.toml)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+
 Standalone, `sqlglot`-only Python package for deterministic Text2SQL evaluation—both when golden SQL references exist (`SQL-BLEU`) and when screening unlabelled model outputs without executing queries against a database (`Valid SQL Rate`, `Wildcard Detector`).
 
 > **Reference:** [Chen et al. (2019), NL2pSQL](https://aclanthology.org/D19-1262/) — Fuxiang Chen, Seung-won Hwang, Jaegul Choo, Jung-Woo Ha, and Sunghun Kim. *NL2pSQL: Generating Pseudo-SQL Queries from Under-Specified Natural Language Questions*. EMNLP-IJCNLP 2019, pages 2603–2613. DOI: `10.18653/v1/D19-1262`.
