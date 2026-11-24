@@ -1,0 +1,4 @@
+# Default owner for everything in the repository.
+# Unless a later match takes precedence, @felipepenha will be requested for
+# review on all pull requests.
+* @felipepenha

@@ -1,0 +1,87 @@
+name: Bug report
+description: Report incorrect evaluation output, SQL parsing/grounding bugs, or crashes.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please search [existing issues](https://github.com/felipepenha/group-by-vibes/issues) before opening a new one, and provide a minimal SQL snippet that reproduces the issue.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected component
+      options:
+        - SqlBleu
+        - ValidSqlRate
+        - WildcardDetector
+        - Extraction / Canonicalization / Parser
+        - Examples / CLI (examples/bird_eval.py)
+        - Packaging / Typing
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: dialect
+    attributes:
+      label: SQL dialect
+      description: Dialect passed to the evaluator (or generic ANSI `""`).
+      placeholder: 'e.g., postgres, sqlite, mysql, or ""'
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproducible example
+      description: Include the input SQL, reference SQL or schema dict (if applicable), and a minimal Python snippet.
+      render: python
+      placeholder: |
+        from group_by_vibes import compute_valid_sql_rate
+
+        result = compute_valid_sql_rate(
+            ["SELECT ..."],
+            [{"users": ["id", "name"]}],
+            dialect="postgres",
+        )
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What score, failure reason, or behavior did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Actual output, failure_counts, or full traceback.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Output of `python --version`, `group-by-vibes` version, and `sqlglot` version.
+      placeholder: |
+        - OS: macOS / Ubuntu / Windows
+        - Python: 3.12.x
+        - group-by-vibes: 0.1.0
+        - sqlglot: 30.33.0
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission check
+      options:
+        - label: I searched existing issues to confirm this is not a duplicate.
+          required: true

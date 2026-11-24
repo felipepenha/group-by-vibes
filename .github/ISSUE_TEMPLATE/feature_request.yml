@@ -1,0 +1,58 @@
+name: Feature or evaluator proposal
+description: Propose a new evaluator, dialect capability, or enhancement before opening a PR.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Per our [Contributing Guide](https://github.com/felipepenha/group-by-vibes/blob/main/CONTRIBUTING.md), please open an issue to align on scope and API design before opening a pull request. Core package modules in `src/group_by_vibes/` must remain `sqlglot`-only with zero heavy ML/Hub runtime dependencies.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Proposal type
+      options:
+        - New Metric (reference-based)
+        - New Measurement (reference-free)
+        - Enhancement to existing evaluator
+        - SQL dialect / canonicalization / schema grounding
+        - Examples / Benchmark tooling
+        - Documentation / Developer experience
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement & motivation
+      description: What evaluation gap or developer pain point does this solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API & behavior
+      description: Outline the proposed class/function signature, inputs, output keys, and edge-case handling.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered & non-goals
+      description: What other approaches were considered, and what is explicitly out of scope?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: scope_checks
+    attributes:
+      label: Scope & follow-up
+      options:
+        - label: If targeting `src/group_by_vibes/`, this keeps core dependencies limited to `sqlglot` only.
+          required: false
+        - label: I plan to open a design doc (`docs/designs/`) and/or PR once scope is aligned.
+          required: false
