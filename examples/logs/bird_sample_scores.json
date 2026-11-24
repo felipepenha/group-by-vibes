@@ -1,0 +1,143 @@
+{
+  "metadata": {
+    "num_rows": 5,
+    "dialect": "sqlite",
+    "extractor": "extract_fenced_or_last_sql",
+    "truncated_count": 1,
+    "group_by_vibes_version": "0.1.0",
+    "sqlglot_version": "30.33.0"
+  },
+  "sql_bleu": {
+    "bleu": 0.9618684588424458,
+    "precisions": [
+      0.9782608695652174,
+      0.9545454545454546,
+      0.9523809523809523,
+      0.9625
+    ],
+    "brevity_penalty": 1.0,
+    "length_ratio": 1.0,
+    "translation_length": 92,
+    "reference_length": 92,
+    "scored_count": 4,
+    "parsed_count": 4,
+    "unparseable_count": 1,
+    "parse_success_rate": 0.8,
+    "reference_parse_success_rate": 1.0,
+    "num_examples": 5,
+    "dialect": "sqlite",
+    "max_order": 4,
+    "smooth": false,
+    "per_example_bleu": [
+      1.0,
+      0.7506238537503395,
+      1.0,
+      null,
+      0.5081327481546147
+    ]
+  },
+  "valid_sql_rate": {
+    "valid_sql_rate": 0.6,
+    "syntax_valid_rate": 0.8,
+    "schema_grounded_rate": 0.75,
+    "schema_grounding_status": "partial",
+    "schema_evaluated_count": 4,
+    "schema_grounded_count": 3,
+    "schema_skipped_count": 1,
+    "syntax_valid_count": 4,
+    "valid_sql_count": 3,
+    "num_examples": 5,
+    "dialect": "sqlite",
+    "failure_counts": {
+      "extraction_failed": 1,
+      "extraction_error": 0,
+      "empty_input": 0,
+      "multi_statement": 0,
+      "command_fallback": 0,
+      "syntax_error": 0,
+      "unknown_table": 0,
+      "unknown_column": 1
+    },
+    "per_example": [
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": false,
+        "schema_valid": null,
+        "failure_reason": "extraction_failed",
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "MissingCol"
+        ]
+      }
+    ]
+  },
+  "wildcard_detector": {
+    "wildcard_rate": 0.25,
+    "wildcard_count": 1,
+    "parsed_count": 4,
+    "parse_failed_count": 1,
+    "extraction_failed_count": 1,
+    "num_examples": 5,
+    "dialect": "sqlite",
+    "per_example": [
+      0,
+      1,
+      0,
+      null,
+      0
+    ]
+  },
+  "by_difficulty": {
+    "challenging": {
+      "num_rows": 1,
+      "bleu": 1.0,
+      "valid_sql_rate": 1.0,
+      "syntax_valid_rate": 1.0,
+      "schema_grounded_rate": 1.0,
+      "wildcard_rate": 0.0
+    },
+    "moderate": {
+      "num_rows": 2,
+      "bleu": 0.9686438070306526,
+      "valid_sql_rate": 0.5,
+      "syntax_valid_rate": 1.0,
+      "schema_grounded_rate": 0.5,
+      "wildcard_rate": 0.0
+    },
+    "simple": {
+      "num_rows": 2,
+      "bleu": 0.7071067811865475,
+      "valid_sql_rate": 0.5,
+      "syntax_valid_rate": 0.5,
+      "schema_grounded_rate": 1.0,
+      "wildcard_rate": 1.0
+    }
+  }
+}

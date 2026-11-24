@@ -1,0 +1,4889 @@
+{
+  "metadata": {
+    "num_rows": 500,
+    "dialect": "sqlite",
+    "extractor": "extract_fenced_or_last_sql",
+    "truncated_count": 2,
+    "group_by_vibes_version": "0.1.0",
+    "sqlglot_version": "30.33.0"
+  },
+  "sql_bleu": {
+    "bleu": 0.18065124245492947,
+    "precisions": [
+      0.6767766367575313,
+      0.39834125689697053,
+      0.22991914698301733,
+      0.12878651766143231
+    ],
+    "brevity_penalty": 0.6043720980097239,
+    "length_ratio": 0.6650858841414989,
+    "translation_length": 29311,
+    "reference_length": 44071,
+    "scored_count": 494,
+    "parsed_count": 494,
+    "unparseable_count": 6,
+    "parse_success_rate": 0.988,
+    "reference_parse_success_rate": 1.0,
+    "num_examples": 500,
+    "dialect": "sqlite",
+    "max_order": 4,
+    "smooth": false,
+    "per_example_bleu": [
+      0.0845038920773167,
+      0.21786429960890316,
+      0.14653866759211162,
+      0.6179335882834499,
+      0.2171658716734887,
+      0.03137636162456401,
+      0.5232390754130278,
+      0.6791044705033911,
+      0.04767458116788651,
+      0.09828650537068732,
+      0.19089594538509957,
+      0.022726429442077426,
+      0.18831463632941434,
+      0.04504896248828555,
+      0.049466844012202804,
+      0.0919965402704366,
+      0.47936424332250377,
+      0.12945692945151907,
+      0.43935253134036195,
+      0.00041560150328665083,
+      0.0467366019711518,
+      0.41816363088736136,
+      0.007092056227276351,
+      0.1611711110390554,
+      0.006154412402275897,
+      0.2630493112914838,
+      0.23555988117270685,
+      0.06803049247210945,
+      0.11717866073274909,
+      0.21291622509296526,
+      0.10936966073076111,
+      0.28709615326753335,
+      0.18745130811506044,
+      0.3772878951684786,
+      0.2176408436071059,
+      0.09061191004308976,
+      0.147345275991555,
+      0.02870544397856726,
+      0.04330313905591041,
+      0.07772219739823563,
+      null,
+      0.003053843054782277,
+      null,
+      0.18574529615775048,
+      0.11600404387615741,
+      0.09987095105762381,
+      0.04369117029827806,
+      0.23111203577926873,
+      0.1883160524756363,
+      0.38650502051582664,
+      0.1208550950345753,
+      0.39379937552039457,
+      0.13711982120941504,
+      0.2013573047543698,
+      1.0,
+      0.3893298672503517,
+      0.7574682004454575,
+      0.7411065559458923,
+      0.24290547816537264,
+      0.6534742885325433,
+      0.3846812301384164,
+      0.1420238779706231,
+      0.08146831854327014,
+      0.15472634977329333,
+      0.5197349979791822,
+      0.06791528081766862,
+      0.08407378996535347,
+      0.500754552323734,
+      0.21236794520221208,
+      0.25620528020494865,
+      0.26953890328437624,
+      0.2248873253574424,
+      0.06372927031931806,
+      0.2173765411487106,
+      0.21112733172179554,
+      0.08010417353911851,
+      0.07843466636744255,
+      0.0004371088950365995,
+      0.15024530535437697,
+      0.19543904636677345,
+      0.22395602197042488,
+      0.1640374346882952,
+      0.11145066344859146,
+      0.10054247176391481,
+      0.2972141383841249,
+      0.20917890179874363,
+      0.05314604719655819,
+      0.24261838816876993,
+      0.06178373389359304,
+      0.55779001264783,
+      0.18386138993619583,
+      0.23226042763999313,
+      0.6821950035797802,
+      0.3340286817166246,
+      0.1386634757219814,
+      0.2244448971067218,
+      0.11260117078286856,
+      0.07888036262523127,
+      0.27945781882658116,
+      0.17690993545127306,
+      0.060265038689758826,
+      0.39304938758531777,
+      0.01973662113984925,
+      0.15361398586440858,
+      0.26197715166933194,
+      0.07424426397990895,
+      0.35476375795814064,
+      0.16936683939653055,
+      0.09092036328418449,
+      0.14100691010276278,
+      0.24226017235844347,
+      0.17760449184092802,
+      0.13947932296951068,
+      0.1815095522089821,
+      0.08652224718648137,
+      0.07610057844433404,
+      0.36273962503692353,
+      0.1576031106071489,
+      0.49845881549362286,
+      0.2054691086569589,
+      0.282691618797925,
+      0.41452805302673845,
+      0.03641852574727569,
+      0.01667262250449871,
+      0.30410782230085015,
+      0.24555239255525713,
+      0.29729898709568225,
+      0.12641555476730107,
+      0.4293120878906802,
+      0.1915687158951962,
+      0.006444559896112376,
+      0.2711308845516364,
+      0.055004840134028316,
+      0.11848136575440253,
+      0.1065110694389029,
+      0.09884506112694118,
+      0.058437916557663526,
+      0.008271772903604483,
+      0.02308381434462525,
+      0.35678771157138967,
+      0.23859403949732597,
+      0.10314064342603348,
+      0.20792078879567877,
+      0.18707358677346841,
+      0.1050452434432274,
+      0.3341415605535713,
+      0.13486393997040536,
+      0.5933321545140054,
+      0.16062986381978359,
+      0.02932577940684819,
+      0.1527229397655885,
+      0.2756622915183742,
+      0.30881691460818045,
+      0.10527355280522456,
+      0.21703315901728737,
+      0.16664256272986366,
+      0.09646386394578482,
+      0.22776598854970018,
+      0.04650011021552131,
+      0.09741322355334033,
+      0.32463226155112623,
+      0.5841547197137517,
+      0.4654399924782873,
+      0.0726125242782785,
+      0.1924222385366726,
+      0.2740088364239787,
+      0.16645398643893955,
+      0.12924354404635832,
+      0.1767754920595907,
+      0.1384837796140437,
+      0.1964336587179585,
+      0.2216750769656753,
+      0.3020601287853407,
+      0.10239178309738962,
+      0.0013267122878442739,
+      0.12075072912369651,
+      0.1022941057035865,
+      0.14610250487795803,
+      0.29058572949157335,
+      0.00472172837971554,
+      0.10191801169655586,
+      0.17916695301863678,
+      0.03908894148533909,
+      0.0427494053547944,
+      0.11886618210059796,
+      0.12335709187995147,
+      0.2777619034011791,
+      0.0213398458111927,
+      0.06166889042283823,
+      0.09046620198234746,
+      0.006038471842200473,
+      0.3600044267435011,
+      0.20103765242090046,
+      0.05335606071851083,
+      0.0854274325973194,
+      0.1855721779531192,
+      0.2555351693791974,
+      0.4928400380172287,
+      0.7026264629821429,
+      0.08833841291837209,
+      0.24267443693569557,
+      0.6061215908925021,
+      0.5615172996076988,
+      0.07590331609656623,
+      0.1158203129749849,
+      0.18955843961874544,
+      0.03198815838713131,
+      0.2078660488326141,
+      0.27496641294933627,
+      0.1544687156011861,
+      0.2715518668755845,
+      0.4642961231680524,
+      0.0476671891819901,
+      0.07350854898978781,
+      0.08742047517593302,
+      0.1494367607325571,
+      0.11914938032112747,
+      0.16689433924529828,
+      0.04414588953319405,
+      0.02676697562486779,
+      0.10883587452715138,
+      0.18980038823307438,
+      0.17089503220406116,
+      0.08050361299379784,
+      0.09761571881852042,
+      0.3886582746700171,
+      0.13522626604754293,
+      0.2105374011051945,
+      0.33185040906335417,
+      0.47116191827723913,
+      0.1141620364103711,
+      0.0780190979454859,
+      0.1412485562353805,
+      0.14642990956628957,
+      0.14851181759790794,
+      0.17657086048386292,
+      0.25044720679376387,
+      0.3352463177068116,
+      0.28495870154123365,
+      0.09413926259456575,
+      0.10213035227158823,
+      0.26208177930613025,
+      0.0861025068644724,
+      0.14472727631239019,
+      0.18393004388794892,
+      0.1682761842500864,
+      0.53910651785414,
+      0.732348846791543,
+      0.09447397604245095,
+      0.06355700108451351,
+      0.04013741985140837,
+      0.08016316629970688,
+      0.22503440090000326,
+      0.05671981958617883,
+      0.032406691460980526,
+      0.11931202653387858,
+      0.2786173754177464,
+      0.21292616599975045,
+      0.22215395206703084,
+      0.11566378131126939,
+      0.3911595212158872,
+      0.05516450261267777,
+      0.17878880750614173,
+      0.11620544953876091,
+      0.1429779513486983,
+      0.021679593089852286,
+      0.09395887311139199,
+      0.06644939017345226,
+      0.08376013638138506,
+      0.13072991975665083,
+      0.24252428550220487,
+      0.05696767853841886,
+      0.029208544515413156,
+      0.40575096518758186,
+      0.29138503594614024,
+      0.1988093509087576,
+      0.1960161373038367,
+      0.10538017028892394,
+      0.07088533010713419,
+      0.06395379470166347,
+      null,
+      0.08950617543534921,
+      0.07382760675931226,
+      0.07084287106416269,
+      0.13592616466129626,
+      0.008292431036815507,
+      0.17011550567092942,
+      0.0956413058098993,
+      0.19779775578804382,
+      0.12915699206109568,
+      0.2043282854957587,
+      0.16413850330321175,
+      0.1759254962450912,
+      0.15759523185789115,
+      0.1862210257502648,
+      0.14280039834605857,
+      0.48629228267757973,
+      0.6065306597126334,
+      0.5697070677376214,
+      0.03169309685734695,
+      0.8844022960737005,
+      0.19036005805692513,
+      0.15735740133987938,
+      0.3161821247357457,
+      0.042417417724634886,
+      0.08403931297665126,
+      0.22443497808158228,
+      0.14370263683531612,
+      0.28160364378236125,
+      0.13308993190624563,
+      0.2028140528608867,
+      0.11369007276562605,
+      0.2002936424567281,
+      0.31824103079391797,
+      0.01315977035730987,
+      0.06287738958448996,
+      0.19852940812787473,
+      0.08220546884762267,
+      0.1397078743715099,
+      0.22735600399693304,
+      0.13906949412538933,
+      0.07146035810922363,
+      0.0607586722221929,
+      0.04397513402720536,
+      0.023293784790071617,
+      0.10669620174933699,
+      0.03718104125651806,
+      0.047965071880648115,
+      0.10461256551546108,
+      0.05494510373341512,
+      0.03901213698292344,
+      0.7512317176876474,
+      0.16797893754194756,
+      0.43973321355481637,
+      0.17392312314244562,
+      0.30477662606505695,
+      0.09386083907463538,
+      0.29076998708859897,
+      0.08833196418761352,
+      0.09835413828664596,
+      0.34149807942882887,
+      0.3093382787443001,
+      0.3331917710737349,
+      0.017734590160504694,
+      0.1163210582793619,
+      0.68804500428259,
+      0.06331190258845737,
+      0.08548489590473089,
+      0.19460584405574596,
+      0.0453879879627833,
+      0.17307950304961067,
+      0.4323394464025243,
+      0.16853443324842898,
+      0.17336909321829272,
+      0.10406859040859821,
+      0.1357925397704824,
+      0.3850509371048187,
+      0.44681529927529723,
+      0.6340355878626611,
+      0.6059718879214882,
+      0.33279487758043647,
+      0.08310769006357309,
+      0.1274180543676754,
+      0.2585269812904059,
+      0.33488150473829625,
+      0.10195032772523288,
+      0.5559948399725788,
+      0.19447258771006226,
+      0.20916431948969302,
+      0.3394269390141507,
+      0.19947845541268946,
+      0.22512015149249998,
+      0.15851887436762271,
+      0.00963429318967361,
+      0.3510702372424951,
+      0.08157262721508439,
+      0.24922017095687912,
+      0.09140955020681257,
+      0.45096044985284367,
+      0.1585222907852275,
+      0.334890936564117,
+      0.34224992931377424,
+      0.30829043778182325,
+      0.011689313731521421,
+      0.231157653316738,
+      0.03528194366352,
+      0.032230226274717645,
+      0.379885571444295,
+      0.20858402774437712,
+      0.14916490493460252,
+      0.5964188245122286,
+      0.1809719878519926,
+      0.12106164443877405,
+      0.11381619481518176,
+      0.38913294879969657,
+      0.20519781217293714,
+      0.11701646151124763,
+      0.07636301088973864,
+      0.10348646850005838,
+      0.21692068901728254,
+      0.10891650865386945,
+      0.26494650808009557,
+      0.15935233471801777,
+      0.5432287173405095,
+      0.12322657173802622,
+      0.14295310081978985,
+      0.3187027037941858,
+      0.5818654770962158,
+      0.26257259109772774,
+      0.5173714130699295,
+      0.0435421290257336,
+      0.1694950132578541,
+      0.3683402852291056,
+      0.24141247802107288,
+      0.03228307126128902,
+      0.4761194386904516,
+      0.25552014617135727,
+      null,
+      0.1326456564098199,
+      0.06767364701766784,
+      0.3785860503216437,
+      0.2102919307983329,
+      0.12773210737802726,
+      0.19414149130620376,
+      0.5051626274336932,
+      0.2630046508839862,
+      0.6396338281682382,
+      0.1580122897964195,
+      0.10342648272700174,
+      0.10097133406672623,
+      0.11639986964072246,
+      0.5282657619264771,
+      null,
+      0.06808048587100711,
+      0.18090827517038174,
+      0.11712455363748338,
+      0.7397243668254029,
+      0.049805224304437255,
+      0.4881894248205819,
+      0.2788029210372029,
+      0.052631520730910174,
+      0.1488452607091343,
+      0.1089293001104357,
+      0.2754271026480005,
+      0.0816969722917392,
+      0.19439031252721772,
+      0.09186804513136038,
+      0.11603149552684956,
+      0.5789771789090407,
+      0.021987726274208502,
+      0.11419600032938482,
+      0.22409416775129817,
+      0.034955875033226474,
+      0.13687402552779865,
+      0.14265652565810819,
+      0.08171138295067346,
+      0.023313137253595795,
+      0.08917615585477463,
+      0.23121441567741233,
+      0.030873388443615545,
+      null,
+      0.2154069840246907,
+      0.1152528361897578,
+      0.21880464127996505,
+      0.021014923439898758,
+      0.7270137742420337,
+      0.2814190014351901,
+      0.09218903505681755,
+      0.08901587779869977,
+      0.17304981220745824,
+      0.18604001062873127,
+      0.407818026606238,
+      0.17518991124463823,
+      0.42020539400902196,
+      0.44141208403277354,
+      0.19843008146032892,
+      0.07831367397147851,
+      0.27932714636080813,
+      0.352360622585062,
+      0.1577485048638285,
+      0.25849647240712587,
+      0.07338127730814999,
+      0.48756354109264693,
+      0.156092513043575,
+      0.08823870540677832,
+      0.49629773318982756,
+      0.6433041443723242,
+      0.0740530840794406,
+      0.6143338736991765,
+      0.2404585989078668,
+      0.24280744869009535,
+      0.1054132745225894,
+      0.11793046456122652,
+      0.18439494512358925,
+      0.15590010127286869,
+      0.06022959252749591,
+      0.7827991387542754,
+      0.09521262220529539,
+      0.18087573552195663,
+      0.17095954738843974
+    ]
+  },
+  "valid_sql_rate": {
+    "valid_sql_rate": 0.736,
+    "syntax_valid_rate": 0.988,
+    "schema_grounded_rate": 0.7449392712550608,
+    "schema_grounding_status": "partial",
+    "schema_evaluated_count": 494,
+    "schema_grounded_count": 368,
+    "schema_skipped_count": 6,
+    "syntax_valid_count": 494,
+    "valid_sql_count": 368,
+    "num_examples": 500,
+    "dialect": "sqlite",
+    "failure_counts": {
+      "extraction_failed": 1,
+      "extraction_error": 0,
+      "empty_input": 0,
+      "multi_statement": 0,
+      "command_fallback": 0,
+      "syntax_error": 5,
+      "unknown_table": 5,
+      "unknown_column": 121
+    },
+    "per_example": [
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.Enrollment (Ages 5-17)",
+          "T1.Enrollment (K-12)"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "Percent (%) Eligible Free (K-12)"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.District Code"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.Enrollment (Ages 5-17)"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "NumTstTkr"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "NSLP Provision Status"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "NumTstTkr",
+          "T1.NumTstTkr"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "School Type"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.NumTstTkr"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.Enrollment (K-12)",
+          "T2.NumTstTkr"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.enroll12"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.NumTstTkr"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.County",
+          "T2.AvgScrMath",
+          "T2.AvgScrRead",
+          "T2.AvgScrWrite"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.AvgScrMath",
+          "T2.AvgScrRead",
+          "T2.AvgScrWrite"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.Enrollment (K-12)",
+          "T1.Percent (%) Eligible FRPM (K-12)",
+          "T2.Highest Avg Math Score"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": false,
+        "schema_valid": null,
+        "failure_reason": "extraction_failed",
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "Enrollment (Ages 5-17)",
+          "Enrollment (K-12)",
+          "High Grade"
+        ]
+      },
+      {
+        "syntax_valid": false,
+        "schema_valid": null,
+        "failure_reason": "syntax_error",
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.County"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.NumTstTkr"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "NSLP Provision Status"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.NSLP Provision Status",
+          "T2.NumTstTkr"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.uuid"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.isContentWarning"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.promoTypes"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.uuid"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.frameVersion"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.isPaper"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.uuid"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.name"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.setCode"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.multiverseid"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.CreationDate"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.PostId"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.CreationDate"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.CreationDate"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "p.CreationDate"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.UserDisplayName"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "percentage_increase"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.TransactionID"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.height"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.buildUpPlaySpeedClass",
+          "T3.team_api_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.season"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.weight"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.height"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.height"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_table",
+        "missing_tables": [
+          "T3"
+        ],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.preferred_foot"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.team_api_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.account_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.district_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.A11"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.client_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.type"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.client_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.account"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.amount",
+          "T4.district_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.account",
+          "T3.amount",
+          "T3.bank",
+          "T3.trans_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T4.account_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.A16"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.A4",
+          "T2.district_id",
+          "T3.type"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.balance"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.district_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_table",
+        "missing_tables": [
+          "T6"
+        ],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.balance",
+          "T3.trans_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "age_at_card_issue",
+          "l.client_id",
+          "t.client_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_table",
+        "missing_tables": [
+          "client"
+        ],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T5.account_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.account_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T4.account",
+          "T4.amount",
+          "T4.type"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.year"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.name",
+          "T1.year"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.forename",
+          "T3.surname"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.circuitRef"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.statusid"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.name",
+          "T2.year"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.driverRef"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": false,
+        "schema_valid": null,
+        "failure_reason": "syntax_error",
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.constructorid",
+          "T1.grid"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.time",
+          "T2.year"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.circuitRef"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.year"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.link_to_event"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "event_date"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.link_to_member"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.department_name"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_table",
+        "missing_tables": [
+          "college"
+        ],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.major_name"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.link_to_member"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.link_to_event"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.link_to_event"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.link_to_event"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.link_to_event"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "event_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.category"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_table",
+        "missing_tables": [
+          "superhero_publisher"
+        ],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.attribute_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.publisher_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.attribute_name"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "CHO",
+          "T2.T"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.TSC"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.IGR"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.DNA",
+          "T2.Date"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.anti-RNP"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.U_PRO"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "II"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.Thrombosis"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": false,
+        "schema_valid": null,
+        "failure_reason": "syntax_error",
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "PRO",
+          "T1.U"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.RA"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.SSC170"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "PRO",
+          "T3.U"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.anti-RNP"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "PRO",
+          "T2.FIB",
+          "T2.U"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "BIL",
+          "T2.T"
+        ]
+      },
+      {
+        "syntax_valid": false,
+        "schema_valid": null,
+        "failure_reason": "syntax_error",
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "Thrombosis"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "II"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "II"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.anti_RNP"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "SEX"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.Birthday"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": false,
+        "schema_valid": null,
+        "failure_reason": "syntax_error",
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T3.U_PRO"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "PRO",
+          "T2.U"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.molecule_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.molecule_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.atom_id",
+          "T2.atom_id2"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.molecule_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T1.atom_id",
+          "T1.atom_id2"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.bond_type",
+          "T2.bond_type_symbol"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": false,
+        "failure_reason": "unknown_column",
+        "missing_tables": [],
+        "missing_columns": [
+          "T2.molecule_id"
+        ]
+      },
+      {
+        "syntax_valid": true,
+        "schema_valid": true,
+        "failure_reason": null,
+        "missing_tables": [],
+        "missing_columns": []
+      }
+    ]
+  },
+  "wildcard_detector": {
+    "wildcard_rate": 0.0,
+    "wildcard_count": 0,
+    "parsed_count": 494,
+    "parse_failed_count": 6,
+    "extraction_failed_count": 1,
+    "num_examples": 500,
+    "dialect": "sqlite",
+    "per_example": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      null,
+      0,
+      null,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      null,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      null,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      null,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      null,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "by_difficulty": {
+    "challenging": {
+      "num_rows": 460,
+      "bleu": 0.17645129652411976,
+      "valid_sql_rate": 0.7217391304347827,
+      "syntax_valid_rate": 0.9869565217391304,
+      "schema_grounded_rate": 0.7312775330396476,
+      "wildcard_rate": 0.0
+    },
+    "moderate": {
+      "num_rows": 32,
+      "bleu": 0.25264221856390146,
+      "valid_sql_rate": 0.875,
+      "syntax_valid_rate": 1.0,
+      "schema_grounded_rate": 0.875,
+      "wildcard_rate": 0.0
+    },
+    "simple": {
+      "num_rows": 8,
+      "bleu": 0.29061309367434673,
+      "valid_sql_rate": 1.0,
+      "syntax_valid_rate": 1.0,
+      "schema_grounded_rate": 1.0,
+      "wildcard_rate": 0.0
+    }
+  }
+}
