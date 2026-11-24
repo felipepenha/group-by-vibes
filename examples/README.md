@@ -6,7 +6,7 @@ This directory holds reference evaluation scripts for **[birdsql/bird_mini_dev](
 
 ### 1. Generate Model Outputs (`generate`, requires `examples` extras)
 
-For local laptops and Apple Silicon (16–24 GB unified RAM), use 3B models (`Qwen/Qwen2.5-Coder-3B-Instruct` or the SQL-specialized `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`, each ~6.2 GB in `torch.bfloat16`) or `Qwen/Qwen2.5-Coder-1.5B-Instruct` (~3 GB in `torch.bfloat16`):
+For local laptops and Apple Silicon (16–24 GB unified RAM), use 3B models (`Qwen/Qwen2.5-Coder-3B-Instruct`, `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`, or `griffith-bigdata/FINER-SQL-3B-v2`, each ~6.2 GB in `torch.bfloat16`) or `Qwen/Qwen2.5-Coder-1.5B-Instruct` (~3 GB in `torch.bfloat16`):
 
 ```bash
 uv sync --extra examples
@@ -22,15 +22,22 @@ uv run python examples/bird_eval.py generate \
   --output examples/logs/bird_xiyansql_3b.jsonl \
   --dialect sqlite \
   --model XGenerationLab/XiYanSQL-QwenCoder-3B-2504
+
+# RL-trained SQL 3B model (FINER-SQL)
+uv run python examples/bird_eval.py generate \
+  --output examples/logs/bird_finer_sql_3b.jsonl \
+  --dialect sqlite \
+  --model griffith-bigdata/FINER-SQL-3B-v2
 ```
 
-Omitting `--sample-size` evaluates the full `bird_mini_dev` split (`500` rows for SQLite). You may optionally pass `--sample-size <N>` to run a deterministic stratified subset (for example, `--sample-size 100` with `--seed 42` for a faster benchmark pass, or `--sample-size 3` for a quick probe), pass `--dialect postgres` or `--dialect mysql` for other dialects, or use `Snowflake/Arctic-Text2SQL-R1-7B` (~15.2 GB BF16) on dedicated 24 GB+ CUDA GPUs.
+Omitting `--sample-size` evaluates the full `bird_mini_dev` split (`500` rows for SQLite). You may optionally pass `--sample-size <N>` to run a deterministic stratified subset (for example, `--sample-size 100` with `--seed 42` for a faster benchmark pass, or `--sample-size 3` for a quick probe), pass `--dialect postgres` or `--dialect mysql` for other dialects, or use `Snowflake/Arctic-Text2SQL-R1-7B` (~15.2 GB BF16) on dedicated 24 GB+ CUDA GPUs. `--model` accepts any Hugging Face repo ID or the built-in presets (`qwen-3b`, `xiyansql-3b`, `finer-sql-3b`, `arctic-7b`).
 
 Each row flushes to disk immediately and logs `[i/N]` progress to `stderr`, so you can follow progress live with:
 
 ```bash
 tail -f examples/logs/bird_qwen_3b.jsonl
 # or: tail -f examples/logs/bird_xiyansql_3b.jsonl
+# or: tail -f examples/logs/bird_finer_sql_3b.jsonl
 ```
 
 * **Sampling:** Evaluates the full split sorted by `question_id` by default, or takes a deterministic stratified sample across `difficulty` (`simple`, `moderate`, `challenging`) when `--sample-size` is specified.
@@ -55,6 +62,10 @@ uv run python examples/bird_eval.py score \
 uv run python examples/bird_eval.py score \
   --input examples/logs/bird_xiyansql_3b.jsonl \
   --output examples/logs/bird_xiyansql_3b_scores.json
+
+uv run python examples/bird_eval.py score \
+  --input examples/logs/bird_finer_sql_3b.jsonl \
+  --output examples/logs/bird_finer_sql_3b_scores.json
 ```
 
 Omit `--output` to print the JSON report to `stdout` instead of writing a file. Scoring evaluates saved JSONL rows across `SqlBleu`, `ValidSqlRate`, `WildcardDetector`, and per-`difficulty` slices using `extract_fenced_or_last_sql`.

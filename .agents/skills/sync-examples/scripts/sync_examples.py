@@ -226,6 +226,9 @@ def _short_labels(models: Sequence[str]) -> tuple[list[str], list[str]]:
         if "xiyansql" in low:
             raw_short.append("XiYanSQL")
             raw_delta.append("XiYan")
+        elif "finer-sql" in low or "finersql" in low:
+            raw_short.append("FINER-SQL")
+            raw_delta.append("FINER-SQL")
         elif "qwen" in low:
             raw_short.append("Qwen")
             raw_delta.append("Qwen")

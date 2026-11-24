@@ -31,6 +31,12 @@ from group_by_vibes import (
 
 DATASET_REPO = "birdsql/bird_mini_dev"
 DEFAULT_MODEL = "Qwen/Qwen2.5-Coder-3B-Instruct"
+MODEL_PRESETS: dict[str, str] = {
+    "qwen-3b": "Qwen/Qwen2.5-Coder-3B-Instruct",
+    "xiyansql-3b": "XGenerationLab/XiYanSQL-QwenCoder-3B-2504",
+    "finer-sql-3b": "griffith-bigdata/FINER-SQL-3B-v2",
+    "arctic-7b": "Snowflake/Arctic-Text2SQL-R1-7B",
+}
 
 DIALECT_FILES: dict[str, tuple[str, str, str]] = {
     "sqlite": (
@@ -133,6 +139,11 @@ def _format_prompt(
     return template.format(engine=engine, schema=ddl, question_block=q_block)
 
 
+def _resolve_model(model: str) -> str:
+    """Resolve a preset alias to its Hugging Face repo ID, or return `model` unchanged."""
+    return MODEL_PRESETS.get(model, model)
+
+
 def run_generate(args: argparse.Namespace) -> int:
     """Download `bird_mini_dev`, optionally sample, run inference, and flush JSONL."""
     try:
@@ -170,17 +181,18 @@ def run_generate(args: argparse.Namespace) -> int:
     else:
         sampled = _stratified_sample(questions, sample_size=args.sample_size, seed=args.seed)
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
+    model_id = _resolve_model(args.model)
+    tokenizer = AutoTokenizer.from_pretrained(model_id)
     if torch.cuda.is_available():
         model = AutoModelForCausalLM.from_pretrained(
-            args.model,
+            model_id,
             torch_dtype=torch.bfloat16,
             device_map="auto",
         )
     else:
         device = "mps" if torch.backends.mps.is_available() else "cpu"
         model = AutoModelForCausalLM.from_pretrained(
-            args.model,
+            model_id,
             torch_dtype=torch.bfloat16,
         ).to(device)
     model.eval()
@@ -239,7 +251,7 @@ def run_generate(args: argparse.Namespace) -> int:
                 "raw_completion": raw_completion,
                 "truncated": truncated,
                 "seed": args.seed,
-                "model": args.model,
+                "model": model_id,
                 "extractor": "extract_fenced_or_last_sql",
                 "group_by_vibes_version": gbv_version,
                 "sqlglot_version": sqlglot_ver,
@@ -358,7 +370,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional stratified sample size (omit to run the full split).",
     )
     gen.add_argument("--max-new-tokens", type=int, default=2048)
-    gen.add_argument("--model", default=DEFAULT_MODEL)
+    gen.add_argument(
+        "--model",
+        default=DEFAULT_MODEL,
+        help=(
+            f"Hugging Face model ID or preset ({', '.join(MODEL_PRESETS)}). "
+            f"Default: {DEFAULT_MODEL}."
+        ),
+    )
 
     score = subparsers.add_parser("score", help="Score JSONL records with core evaluators.")
     score.add_argument("--input", required=True, help="Input JSONL path.")
