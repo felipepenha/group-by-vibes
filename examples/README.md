@@ -76,102 +76,82 @@ Each row stores: `question_id`, `db_id`, `difficulty`, `dialect`, `question`, `e
 
 ## Comparative Evaluation Report (SQLite, Full Split, n=500)
 
-Paired full-split evaluation on `birdsql/bird_mini_dev` (`sqlite`), comparing `Qwen/Qwen2.5-Coder-3B-Instruct` vs. `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` over the identical `500` questions.
+Evaluation on `birdsql/bird_mini_dev` (`sqlite`, `n = 500`): `griffith-bigdata/FINER-SQL-3B-v2` vs. `Qwen/Qwen2.5-Coder-3B-Instruct` vs. `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`.
 
 ### Run Metadata
 
 * **Dataset & Split:** `birdsql/bird_mini_dev` (`sqlite`, full `500` rows: `460` challenging, `32` moderate, `8` simple across `11` databases)
-* **Models Compared:** `Qwen/Qwen2.5-Coder-3B-Instruct` vs. `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`
+* **Models Compared:** `griffith-bigdata/FINER-SQL-3B-v2` vs. `Qwen/Qwen2.5-Coder-3B-Instruct` vs. `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`
 * **Extractor & Versions:** `extract_fenced_or_last_sql`, `group_by_vibes` `0.0.1`, `sqlglot` `30.33.0`
-* **Score Reports:** `examples/logs/bird_qwen_3b_scores.json`, `examples/logs/bird_xiyansql_3b_scores.json`
+* **Score Reports:** `examples/logs/bird_finer_sql_3b_scores.json`, `examples/logs/bird_qwen_3b_scores.json`, `examples/logs/bird_xiyansql_3b_scores.json`
 
 ### Headline Comparison
 
-| Metric | `Qwen/Qwen2.5-Coder-3B-Instruct` | `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` | Delta (`XiYan - Qwen`) |
+| Metric | `griffith-bigdata/FINER-SQL-3B-v2` | `Qwen/Qwen2.5-Coder-3B-Instruct` | `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` |
 | --- | ---: | ---: | ---: |
-| **SQL-BLEU** | `0.2130` | `0.1807` | `-0.0324` |
-| **Parsed Queries (SQL-BLEU)** | `478/500` (`95.6%`) | `494/500` (`98.8%`) | `+3.2 pp` (`+16`) |
-| **SQL-BLEU precisions (1 / 2 / 3 / 4)** | `0.714 / 0.447 / 0.278 / 0.171` | `0.677 / 0.398 / 0.230 / 0.129` | `-0.037 / -0.049 / -0.048 / -0.042` |
-| **AST Token Length (Pred / Gold)** | `28,252 / 42,364` | `29,311 / 44,071` | `+1,059` pred tokens |
-| **Length Ratio / Brevity Penalty** | `0.667` / `0.607` | `0.665` / `0.604` | `-0.002` / `-0.002` |
-| **Per-example SQL-BLEU (min / p25 / median / mean / p75 / max)** | `0.0013 / 0.0948 / 0.1961 / 0.2351 / 0.3177 / 1.0000` | `0.0004 / 0.0895 / 0.1640 / 0.2074 / 0.2695 / 1.0000` | median `-0.0321`, mean `-0.0276` |
-| **Exact Canonical Matches (`BLEU = 1.0`)** | `1` | `1` | `0` |
-| **Valid SQL Rate** | `56.2%` (`281/500`) | `73.6%` (`368/500`) | `+17.4 pp` (`+87`) |
-| **Wildcard Rate (`SELECT *`)** | `0.0%` (`0/478`) | `0.0%` (`0/494`) | `0.0 pp` |
-| **Truncated Completions** | `1` | `2` | `+1` |
+| **SQL-BLEU** | `0.2646` | `0.2130` | `0.1807` |
+| **Parsed Queries (SQL-BLEU)** | `495/500` (`99.0%`) | `478/500` (`95.6%`) | `494/500` (`98.8%`) |
+| **SQL-BLEU precisions (1 / 2 / 3 / 4)** | `0.782 / 0.551 / 0.397 / 0.283` | `0.714 / 0.447 / 0.278 / 0.171` | `0.677 / 0.398 / 0.230 / 0.129` |
+| **AST Token Length (Pred / Gold)** | `28,062 / 44,147` | `28,252 / 42,364` | `29,311 / 44,071` |
+| **Length Ratio / Brevity Penalty** | `0.636` / `0.564` | `0.667` / `0.607` | `0.665` / `0.604` |
+| **Per-example SQL-BLEU (min / p25 / median / mean / p75 / max)** | `0.0004 / 0.1431 / 0.2539 / 0.2874 / 0.3967 / 1.0000` | `0.0013 / 0.0948 / 0.1961 / 0.2351 / 0.3177 / 1.0000` | `0.0004 / 0.0895 / 0.1640 / 0.2074 / 0.2695 / 1.0000` |
+| **Exact Canonical Matches (`BLEU = 1.0`)** | `1` | `1` | `1` |
+| **Valid SQL Rate** | `84.2%` (`421/500`) | `56.2%` (`281/500`) | `73.6%` (`368/500`) |
+| **Wildcard Rate (`SELECT *`)** | `0.0%` (`0/495`) | `0.0%` (`0/478`) | `0.0%` (`0/494`) |
+| **Truncated Completions** | `4` | `1` | `2` |
 
 ### Breakdown by Difficulty
 
-| Difficulty | Rows | Qwen SQL-BLEU | XiYanSQL SQL-BLEU | Delta BLEU | Qwen Valid SQL | XiYanSQL Valid SQL | Delta Valid SQL |
+| Difficulty | Rows | FINER-SQL SQL-BLEU | Qwen SQL-BLEU | XiYanSQL SQL-BLEU | FINER-SQL Valid SQL | Qwen Valid SQL | XiYanSQL Valid SQL |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `simple` | 8 | `0.3167` | `0.2906` | `-0.0261` | `87.5%` (`7`) | `100.0%` (`8`) | `+12.5 pp` |
-| `moderate` | 32 | `0.2783` | `0.2526` | `-0.0257` | `71.9%` (`23`) | `87.5%` (`28`) | `+15.6 pp` |
-| `challenging` | 460 | `0.2091` | `0.1765` | `-0.0327` | `54.6%` (`251`) | `72.2%` (`332`) | `+17.6 pp` |
+| `simple` | 8 | `0.3549` | `0.3167` | `0.2906` | `87.5%` (`7`) | `87.5%` (`7`) | `100.0%` (`8`) |
+| `moderate` | 32 | `0.3058` | `0.2783` | `0.2526` | `96.9%` (`31`) | `71.9%` (`23`) | `87.5%` (`28`) |
+| `challenging` | 460 | `0.2619` | `0.2091` | `0.1765` | `83.3%` (`383`) | `54.6%` (`251`) | `72.2%` (`332`) |
 
 ### Breakdown by Database
 
-| Database | Rows | Qwen SQL-BLEU | XiYanSQL SQL-BLEU | Delta BLEU | Qwen Valid SQL | XiYanSQL Valid SQL | Delta Valid SQL |
+| Database | Rows | FINER-SQL SQL-BLEU | Qwen SQL-BLEU | XiYanSQL SQL-BLEU | FINER-SQL Valid SQL | Qwen Valid SQL | XiYanSQL Valid SQL |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `california_schools` | 49 | `0.1607` | `0.1416` | `-0.0191` | `22.4%` (`11`) | `55.1%` (`27`) | `+32.7 pp` |
-| `card_games` | 69 | `0.3005` | `0.2157` | `-0.0849` | `66.7%` (`46`) | `85.5%` (`59`) | `+18.8 pp` |
-| `codebase_community` | 31 | `0.2172` | `0.1852` | `-0.0320` | `61.3%` (`19`) | `80.6%` (`25`) | `+19.4 pp` |
-| `debit_card_specializing` | 14 | `0.2496` | `0.2123` | `-0.0374` | `92.9%` (`13`) | `85.7%` (`12`) | `-7.1 pp` |
-| `european_football_2` | 31 | `0.0895` | `0.1042` | `+0.0147` | `48.4%` (`15`) | `71.0%` (`22`) | `+22.6 pp` |
-| `financial` | 46 | `0.2330` | `0.1843` | `-0.0487` | `45.7%` (`21`) | `54.3%` (`25`) | `+8.7 pp` |
-| `formula_1` | 55 | `0.1995` | `0.1492` | `-0.0503` | `58.2%` (`32`) | `78.2%` (`43`) | `+20.0 pp` |
-| `student_club` | 37 | `0.2388` | `0.1523` | `-0.0865` | `70.3%` (`26`) | `64.9%` (`24`) | `-5.4 pp` |
-| `superhero` | 50 | `0.2117` | `0.2396` | `+0.0279` | `62.0%` (`31`) | `92.0%` (`46`) | `+30.0 pp` |
-| `thrombosis_prediction` | 86 | `0.2020` | `0.1891` | `-0.0129` | `55.8%` (`48`) | `69.8%` (`60`) | `+14.0 pp` |
-| `toxicology` | 32 | `0.2639` | `0.2376` | `-0.0264` | `59.4%` (`19`) | `78.1%` (`25`) | `+18.8 pp` |
-
-### Paired Head-to-Head Outcomes (Same 500 Questions)
-
-#### Valid SQL Rate Agreement
-
-| Outcome Category | Count | Share |
-| --- | ---: | ---: |
-| Both models valid | `237` | `47.4%` |
-| XiYanSQL valid only | `131` | `26.2%` |
-| Qwen valid only | `44` | `8.8%` |
-| Neither model valid | `88` | `17.6%` |
-
-#### Per-Example SQL-BLEU Head-to-Head (`n = 500`)
-
-Unparseable predictions rank below parsed predictions; across the `473` jointly parsed queries, mean per-example `SQL-BLEU` is `0.2334` for Qwen vs. `0.2083` for XiYanSQL (`-0.0251`).
-
-| Outcome Category | Count | Share |
-| --- | ---: | ---: |
-| Qwen higher BLEU | `266` | `53.2%` |
-| XiYanSQL higher BLEU | `221` | `44.2%` |
-| Tied | `13` | `2.6%` |
+| `california_schools` | 49 | `0.1682` | `0.1607` | `0.1416` | `46.9%` (`23`) | `22.4%` (`11`) | `55.1%` (`27`) |
+| `card_games` | 69 | `0.3222` | `0.3005` | `0.2157` | `92.8%` (`64`) | `66.7%` (`46`) | `85.5%` (`59`) |
+| `codebase_community` | 31 | `0.2364` | `0.2172` | `0.1852` | `93.5%` (`29`) | `61.3%` (`19`) | `80.6%` (`25`) |
+| `debit_card_specializing` | 14 | `0.2643` | `0.2496` | `0.2123` | `92.9%` (`13`) | `92.9%` (`13`) | `85.7%` (`12`) |
+| `european_football_2` | 31 | `0.1137` | `0.0895` | `0.1042` | `87.1%` (`27`) | `48.4%` (`15`) | `71.0%` (`22`) |
+| `financial` | 46 | `0.2643` | `0.2330` | `0.1843` | `80.4%` (`37`) | `45.7%` (`21`) | `54.3%` (`25`) |
+| `formula_1` | 55 | `0.2930` | `0.1995` | `0.1492` | `89.1%` (`49`) | `58.2%` (`32`) | `78.2%` (`43`) |
+| `student_club` | 37 | `0.2635` | `0.2388` | `0.1523` | `100.0%` (`37`) | `70.3%` (`26`) | `64.9%` (`24`) |
+| `superhero` | 50 | `0.3829` | `0.2117` | `0.2396` | `92.0%` (`46`) | `62.0%` (`31`) | `92.0%` (`46`) |
+| `thrombosis_prediction` | 86 | `0.2573` | `0.2020` | `0.1891` | `75.6%` (`65`) | `55.8%` (`48`) | `69.8%` (`60`) |
+| `toxicology` | 32 | `0.3384` | `0.2639` | `0.2376` | `96.9%` (`31`) | `59.4%` (`19`) | `78.1%` (`25`) |
 
 ### Failure Breakdown (`valid_sql_rate.failure_counts`)
 
-| Failure Reason | `Qwen/Qwen2.5-Coder-3B-Instruct` | `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` | Delta (`XiYan - Qwen`) |
+| Failure Reason | `griffith-bigdata/FINER-SQL-3B-v2` | `Qwen/Qwen2.5-Coder-3B-Instruct` | `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` |
 | --- | ---: | ---: | ---: |
-| `unknown_column` | `184` | `121` | `-63` |
-| `syntax_error` | `19` | `5` | `-14` |
-| `unknown_table` | `13` | `5` | `-8` |
-| `multi_statement` | `3` | `0` | `-3` |
-| `extraction_failed` | `0` | `1` | `+1` |
+| `unknown_column` | `67` | `184` | `121` |
+| `syntax_error` | `5` | `19` | `5` |
+| `unknown_table` | `7` | `13` | `5` |
+| `multi_statement` | `0` | `3` | `0` |
+| `extraction_failed` | `0` | `0` | `1` |
 | `extraction_error` | `0` | `0` | `0` |
 | `empty_input` | `0` | `0` | `0` |
 | `command_fallback` | `0` | `0` | `0` |
 
 ### SQL Style & Structural Patterns (`n = 500`)
 
-| Pattern | Gold SQL | `Qwen/Qwen2.5-Coder-3B-Instruct` | `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` |
-| --- | ---: | ---: | ---: |
-| `T1`/`T2` table aliases | `93` (`18.6%`) | `286` (`57.2%`) | `427` (`85.4%`) |
-| Explicit `INNER JOIN` | `129` (`25.8%`) | `36` (`7.2%`) | `348` (`69.6%`) |
-| `WITH` CTEs | `150` (`30.0%`) | `3` (`0.6%`) | `2` (`0.4%`) |
-| `CAST(...)` expressions | `145` (`29.0%`) | `11` (`2.2%`) | `39` (`7.8%`) |
-| `CASE` / `IIF` conditionals | `116` (`23.2%`) | `89` (`17.8%`) | `93` (`18.6%`) |
-| Mean extracted query length (chars) | `371.6` | `287.7` | `251.6` |
+| Pattern | Gold SQL | `griffith-bigdata/FINER-SQL-3B-v2` | `Qwen/Qwen2.5-Coder-3B-Instruct` | `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` |
+| --- | ---: | ---: | ---: | ---: |
+| `T1`/`T2` table aliases | `93` (`18.6%`) | `0` (`0.0%`) | `286` (`57.2%`) | `427` (`85.4%`) |
+| Explicit `INNER JOIN` | `129` (`25.8%`) | `0` (`0.0%`) | `36` (`7.2%`) | `348` (`69.6%`) |
+| `WITH` CTEs | `150` (`30.0%`) | `1` (`0.2%`) | `3` (`0.6%`) | `2` (`0.4%`) |
+| `CAST(...)` expressions | `145` (`29.0%`) | `11` (`2.2%`) | `11` (`2.2%`) | `39` (`7.8%`) |
+| `CASE` / `IIF` conditionals | `116` (`23.2%`) | `81` (`16.2%`) | `89` (`17.8%`) | `93` (`18.6%`) |
+| Mean extracted query length (chars) | `371.6` | `244.1` | `287.7` | `251.6` |
 
 ### Key Comparative Takeaways
 
-1. **XiYanSQL wins on `Valid SQL Rate` (`+17.4 pp`, `73.6%` vs `56.2%`):** Across identical questions, `131` queries pass only for XiYanSQL vs `44` only for Qwen, winning on `9` of `11` databases (`california_schools` `+32.7 pp`, `superhero` `+30.0 pp`) while reducing `unknown_column` failures (`184` -> `121`), `unknown_table` (`13` -> `5`), and parse failures (`syntax_error` `19` -> `5`, `multi_statement` `3` -> `0`).
-2. **`Qwen` scores higher on `SQL-BLEU` (`0.2130` vs `0.1807`) despite lower validity:** XiYanSQL standardizes on `T1`/`T2` aliases (`85.4%` vs Qwen `57.2%` vs gold `18.6%`) and explicit `INNER JOIN` (`69.6%` vs Qwen `7.2%` vs gold `25.8%`), which lowers token n-gram precision because `SQL-BLEU` does not alpha-rename table aliases. XiYanSQL also emits shorter queries (`251.6` vs `287.7` chars), occasionally dropping `WHERE` filters or `GROUP BY` clauses.
-3. **Shared brevity penalty:** Both 3B models emit ~33% fewer AST tokens than gold SQL—rarely generating `WITH` CTEs (`0.6%` and `0.4%` vs `30.0%` in gold) or `CAST(...)` expressions (`2.2%` and `7.8%` vs `29.0%`)—yielding nearly identical brevity penalties (`0.607` vs `0.604`).
-4. **Metric complementarity:** `Valid SQL Rate` and `SQL-BLEU` capture orthogonal signals (schema grounding vs. clause/lexical similarity to reference SQL) and complement execution accuracy (`EX`).
+1. **`FINER-SQL` leads both `Valid SQL Rate` (`84.2%`, `421/500`) and `SQL-BLEU` (`0.2646`):** Across the identical `500` SQLite questions, `FINER-SQL` outpaces `XiYanSQL` (`73.6%`, `+10.6 pp` / `+53` valid queries) and `Qwen` (`56.2%`, `+28.0 pp` / `+140` valid queries) on `Valid SQL Rate`, while also leading `SQL-BLEU` over `Qwen` (`0.2130`, `+0.0516`) and `XiYanSQL` (`0.1807`, `+0.0839`) across all `11` databases and all `3` difficulty tiers. On `Valid SQL Rate`, `FINER-SQL` leads or ties on `10` of `11` databases (including `100.0%` on `student_club` and `96.9%` on `toxicology`), trailing `XiYanSQL` only on `california_schools` (`46.9%` vs `55.1%`) and the `8`-row `simple` slice (`87.5%` vs `100.0%`).
+2. **Error reduction and 3-way agreement:** `FINER-SQL` cuts `unknown_column` failures to `67` (vs `121` for `XiYanSQL` and `184` for `Qwen`), matches `XiYanSQL` on low `syntax_error` counts (`5` each vs `19` for `Qwen`), and records `0` `multi_statement` or `extraction_failed` errors (`unknown_table`: `7` vs `5` for `XiYanSQL` and `13` for `Qwen`). Across all `500` questions, `221` (`44.2%`) pass for all three models, `37` (`7.4%`) fail for all three, and `FINER-SQL` uniquely passes `51` queries (`10.2%`) where both `Qwen` and `XiYanSQL` fail (vs `24` unique passes for `XiYanSQL` and `2` for `Qwen`); head-to-head on `Valid SQL Rate`, `FINER-SQL` beats `XiYanSQL` `93` to `40` (`328` both valid) and beats `Qwen` `158` to `18` (`263` both valid). On per-example `SQL-BLEU`, `FINER-SQL` holds the sole top score on `249` questions (`49.8%`) vs `129` (`25.8%`) for `Qwen`, `108` (`21.6%`) for `XiYanSQL`, and `14` ties (`2.8%`).
+3. **SQL style drives n-gram precision differences:** `FINER-SQL` avoids synthetic `T1`/`T2` aliases (`0.0%` vs `57.2%` for `Qwen`, `85.4%` for `XiYanSQL`, `18.6%` in gold) and explicit `INNER JOIN` boilerplate (`0.0%` vs `7.2%` for `Qwen`, `69.6%` for `XiYanSQL`, `25.8%` in gold), lifting `SQL-BLEU` n-gram precisions at every order (`0.782 / 0.551 / 0.397 / 0.283` vs `0.714 / 0.447 / 0.278 / 0.171` for `Qwen` and `0.677 / 0.398 / 0.230 / 0.129` for `XiYanSQL`) despite emitting the shortest queries (`244.1` chars, brevity penalty `0.564`). Between `Qwen` and `XiYanSQL`, that same alias and join verbosity explains why `Qwen` retains a higher `SQL-BLEU` (`0.2130` vs `0.1807`) despite lower `Valid SQL Rate` (`56.2%` vs `73.6%`).
+4. **Shared structural brevity and zero wildcards:** All three 3B models emit ~33–36% fewer AST tokens than gold SQL (`length_ratio` `0.636`–`0.667`, `brevity_penalty` `0.564`–`0.607`), rarely generating `WITH` CTEs (`0.2%`–`0.6%` vs `30.0%` in gold) or `CAST(...)` expressions (`2.2%`–`7.8%` vs `29.0%` in gold), and all three emit `0.0%` projection wildcards (`SELECT *`). All `4` truncated `FINER-SQL` completions still extract to valid SQL via `extract_fenced_or_last_sql` because a fenced SQL block appears before trailing reasoning hits `max_new_tokens`.
+5. **Metric complementarity:** `Valid SQL Rate` and `SQL-BLEU` capture orthogonal signals—schema grounding vs. clause and lexical similarity to reference SQL (as seen in the `Qwen` vs `XiYanSQL` split, while `FINER-SQL` improves both)—and complement execution accuracy (`EX`).
