@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "group-by-vibes"
-version = "0.1.0"
+version = "0.0.1"
 description = "Standalone deterministic Text2SQL evaluation package powered by sqlglot"
 readme = "README.md"
 license = "Apache-2.0"
