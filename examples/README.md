@@ -30,7 +30,7 @@ uv run python examples/bird_eval.py generate \
   --model griffith-bigdata/FINER-SQL-3B-v2
 ```
 
-Omitting `--sample-size` evaluates the full `bird_mini_dev` split (`500` rows for SQLite). You may optionally pass `--sample-size <N>` to run a deterministic stratified subset (for example, `--sample-size 100` with `--seed 42` for a faster benchmark pass, or `--sample-size 3` for a quick probe), pass `--dialect postgres` or `--dialect mysql` for other dialects, or use `Snowflake/Arctic-Text2SQL-R1-7B` (~15.2 GB BF16) on dedicated 24 GB+ CUDA GPUs. `--model` accepts any Hugging Face repo ID or the built-in presets (`qwen-3b`, `xiyansql-3b`, `finer-sql-3b`, `arctic-7b`).
+Omitting `--sample-size` evaluates the full `bird_mini_dev` split (`500` rows for SQLite). You may optionally pass `--sample-size <N>` to run a deterministic stratified subset (for example, `--sample-size 100` with `--seed 42` for a faster benchmark pass, or `--sample-size 3` for a quick probe), or pass `--dialect postgres` or `--dialect mysql` for other dialects. `--model` accepts any Hugging Face repo ID or the built-in presets (`qwen-3b`, `xiyansql-3b`, `finer-sql-3b`).
 
 Each row flushes to disk immediately and logs `[i/N]` progress to `stderr`, so you can follow progress live with:
 

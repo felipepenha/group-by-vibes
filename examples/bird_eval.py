@@ -35,7 +35,6 @@ MODEL_PRESETS: dict[str, str] = {
     "qwen-3b": "Qwen/Qwen2.5-Coder-3B-Instruct",
     "xiyansql-3b": "XGenerationLab/XiYanSQL-QwenCoder-3B-2504",
     "finer-sql-3b": "griffith-bigdata/FINER-SQL-3B-v2",
-    "arctic-7b": "Snowflake/Arctic-Text2SQL-R1-7B",
 }
 
 DIALECT_FILES: dict[str, tuple[str, str, str]] = {

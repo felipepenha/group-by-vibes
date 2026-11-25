@@ -17,7 +17,7 @@ Following Hugging Face `evaluate` terminology, v1 organizes three dialect-depend
 *   **Measurement (`Valid SQL Rate`, reference-free):** Performs lenient, dialect-aware `sqlglot` AST parsing (rejecting empty inputs, multi-statement inputs, and `exp.Command` nodes—`sqlglot`'s unparsed fallback AST representation) and optionally checks table/column grounding via `sqlglot.optimizer.scope.build_scope` against per-query Python `dict` schemas, without executing SQL, parsing `CREATE TABLE` DDL, or type checking.
 *   **Measurement (`Wildcard Detector`, reference-free):** Scans parsed query ASTs and outputs `1` when `SELECT *` or `table.*` projections appear, `0` otherwise (excluding `COUNT(*)`, `EXISTS (SELECT * ...)`, and `*` arithmetic), and `None` on unparseable rows.
 
-All three evaluators expose a synchronous `evaluate`-shaped `add()` / `add_batch()` / `compute()` / `reset()` lifecycle (`prediction`/`reference` and `"translation_length"` on `SqlBleu`; `data=` on Measurements; returning JSON-serializable `dict`s and resetting state after `compute()`) layered over stateless helper functions, share an optional regex/callable SQL `extractor`, and carry zero dependency on `evaluate`, `datasets`, or `pyarrow`. Benchmark inference on `birdsql/bird_mini_dev` (with `Qwen/Qwen2.5-Coder-3B-Instruct` or `Snowflake/Arctic-Text2SQL-R1-7B`) lives outside core in `examples/`.
+All three evaluators expose a synchronous `evaluate`-shaped `add()` / `add_batch()` / `compute()` / `reset()` lifecycle (`prediction`/`reference` and `"translation_length"` on `SqlBleu`; `data=` on Measurements; returning JSON-serializable `dict`s and resetting state after `compute()`) layered over stateless helper functions, share an optional regex/callable SQL `extractor`, and carry zero dependency on `evaluate`, `datasets`, or `pyarrow`. Benchmark inference on `birdsql/bird_mini_dev` (with local 3B models such as `Qwen/Qwen2.5-Coder-3B-Instruct`, `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`, or `griffith-bigdata/FINER-SQL-3B-v2`) lives outside core in `examples/`.
 
 Because v1 executes no queries against a database engine, these evaluators act as deterministic pre-execution guardrails rather than substitutes for execution accuracy (`EX`).
 
@@ -39,7 +39,7 @@ AI Engineers evaluating Text2SQL LLMs face two gaps in standard tooling:
 *   **All `sqlglot` Dialects Accepted:** Accept any dialect supported by `sqlglot` (aliases and ANSI `""` included), prioritizing PostgreSQL and SQLite in docs, examples, and tests.
 *   **Streaming & Stateless Parity:** Provide synchronous O(1)-counter accumulators (`add` / `add_batch` / `compute` / `reset`, opt-in `include_per_example` in O(N) list memory, post-compute reset) over stateless `compute_*` / `sentence_sql_bleu` helpers.
 *   **Shared Extraction & Bounded Parsing:** Share an optional regex/callable `extractor`, fix the detached-node `And`/`Or` bug in [sql_bleu.py](../../src/sql_bleu.py), enforce input/query length bounds, catch parser/recursion errors, and omit raw SQL query literals from logs.
-*   **External Reference Benchmark (`examples/`):** Ship an isolated CLI evaluating `birdsql/bird_mini_dev` (SQLite, PostgreSQL, MySQL) with `Qwen/Qwen2.5-Coder-3B-Instruct` or `Snowflake/Arctic-Text2SQL-R1-7B` and saving JSONL logs for zero-ML offline re-scoring.
+*   **External Reference Benchmark (`examples/`):** Ship an isolated CLI evaluating `birdsql/bird_mini_dev` (SQLite, PostgreSQL, MySQL) with local 3B models (`Qwen/Qwen2.5-Coder-3B-Instruct`, `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`, `griffith-bigdata/FINER-SQL-3B-v2`) and saving JSONL logs for zero-ML offline re-scoring.
 
 ## Non-Goals
 
@@ -76,7 +76,7 @@ None — all initial design questions have been resolved and incorporated into t
 
 ### CUJ 3: Score Reasoning-Model Outputs on the External Reference Benchmark
 
-*   **Given:** An AI Engineer runs `examples/bird_eval.py` with `Qwen/Qwen2.5-Coder-3B-Instruct` (or `Snowflake/Arctic-Text2SQL-R1-7B` on dedicated CUDA GPUs) on `birdsql/bird_mini_dev` (500 queries across 11 relational databases in `"sqlite"`, `"postgres"`, or `"mysql"`), where outputs may contain ```` ```sql ```` fences or optional `<think>...</think>` reasoning blocks.
+*   **Given:** An AI Engineer runs `examples/bird_eval.py` with a local 3B model (such as `Qwen/Qwen2.5-Coder-3B-Instruct`, `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`, or `griffith-bigdata/FINER-SQL-3B-v2`) on `birdsql/bird_mini_dev` (500 queries across 11 relational databases in `"sqlite"`, `"postgres"`, or `"mysql"`), where outputs may contain ```` ```sql ```` fences or optional `<think>...</think>` reasoning blocks.
 *   **When:** The script parses `baseline_inference/schemas/<dialect>.json` DDL into per-database `dict` schemas, logs completions and schemas to JSONL, and scores outputs across all three evaluators sharing `extract_fenced_or_last_sql`.
 *   **Then:** All three evaluators process the identical extracted SQL string per row without importing ML packages into core, enabling reproducible, auditable offline re-scoring across package releases.
 
@@ -128,7 +128,7 @@ None — all initial design questions have been resolved and incorporated into t
 
   -------------------------------------------------------------------------------------
   External Reference Boundary (`examples/bird_eval.py`, outside core pkg):
-  [Qwen2.5-Coder-3B / Arctic-Text2SQL-7B + bird_mini_dev] -> JSONL log -> core API
+  [Local 3B SQL models + bird_mini_dev] -> JSONL log -> core API
 ```
 
 ### Package Architecture & Module Boundaries (`src/group_by_vibes/`)
@@ -251,7 +251,7 @@ def load(name: Literal["sql_bleu", "valid_sql_rate", "wildcard_detector"] | str,
 ### External Reference Benchmark Boundary (`examples/`)
 
 *   **Strict Isolation:** `examples/bird_eval.py` uses only `[project.optional-dependencies]` `examples` in `pyproject.toml`, remaining outside `src/group_by_vibes/` so ML/dataset packages never enter core imports.
-*   **Deterministic Stratification & Inference:** Samples up to 500 queries from `birdsql/bird_mini_dev` (`data/mini_dev_sqlite.jsonl`, `data/mini_dev_postgresql.jsonl`, or `data/mini_dev_mysql.jsonl`) across 11 multi-table databases, stratified by `difficulty` (`simple`, `moderate`, `challenging`), sorting each stratum by `question_id` before `random.Random(42).sample(...)`. Loads `baseline_inference/schemas/<dialect>.json` via `huggingface_hub.hf_hub_download`, parses `CREATE TABLE` DDL into per-database `{table: [columns]}` `dict` schemas, and records `gold_sql = row["SQL"]` plus `evidence`. Formats prompts with `baseline_inference/prompt_template.txt` (`apply_chat_template` when present) using `torch.bfloat16` (`batch_size=1`, `max_new_tokens=2048`), defaulting to `Qwen/Qwen2.5-Coder-3B-Instruct` (~6.2 GB BF16 for local Apple Silicon/laptops, alongside optional `Snowflake/Arctic-Text2SQL-R1-7B` on 24 GB+ CUDA GPUs).
+*   **Deterministic Stratification & Inference:** Samples up to 500 queries from `birdsql/bird_mini_dev` (`data/mini_dev_sqlite.jsonl`, `data/mini_dev_postgresql.jsonl`, or `data/mini_dev_mysql.jsonl`) across 11 multi-table databases, stratified by `difficulty` (`simple`, `moderate`, `challenging`), sorting each stratum by `question_id` before `random.Random(42).sample(...)`. Loads `baseline_inference/schemas/<dialect>.json` via `huggingface_hub.hf_hub_download`, parses `CREATE TABLE` DDL into per-database `{table: [columns]}` `dict` schemas, and records `gold_sql = row["SQL"]` plus `evidence`. Formats prompts with `baseline_inference/prompt_template.txt` (`apply_chat_template` when present) using `torch.bfloat16` (`batch_size=1`, `max_new_tokens=2048`), defaulting to `Qwen/Qwen2.5-Coder-3B-Instruct` (~6.2 GB BF16 for local Apple Silicon/laptops, alongside presets for `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` and `griffith-bigdata/FINER-SQL-3B-v2`).
 *   **Reproducible JSONL Log:** Flushes per-row records (`question_id`, `db_id`, `difficulty`, `dialect`, `question`, `evidence`, `schema`, `gold_sql`, `raw_completion`, `truncated`, `seed`, `model`, `extractor`, `group_by_vibes_version`, `sqlglot_version`) per query before offline `score` evaluation across all three evaluators plus per-`difficulty` breakdown.
 
 ## Alternatives Considered
@@ -388,7 +388,7 @@ def load(name: Literal["sql_bleu", "valid_sql_rate", "wildcard_detector"] | str,
 *   **ISO SQL:2016 Grammar Reference:** [sql-2016.ebnf](https://github.com/ronsavage/SQL/blob/master/sql-2016.ebnf)
 *   **SQL Parser & Scope Engine:** [sqlglot](https://github.com/tobymao/sqlglot)
 *   **API Reference Model:** [Hugging Face evaluate](https://huggingface.co/docs/evaluate)
-*   **External Benchmark & Models:** [birdsql/bird_mini_dev](https://huggingface.co/datasets/birdsql/bird_mini_dev), [Qwen/Qwen2.5-Coder-3B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct), and [Snowflake/Arctic-Text2SQL-R1-7B](https://huggingface.co/Snowflake/Arctic-Text2SQL-R1-7B)
+*   **External Benchmark & Models:** [birdsql/bird_mini_dev](https://huggingface.co/datasets/birdsql/bird_mini_dev), [Qwen/Qwen2.5-Coder-3B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct), [XGenerationLab/XiYanSQL-QwenCoder-3B-2504](https://huggingface.co/XGenerationLab/XiYanSQL-QwenCoder-3B-2504), and [griffith-bigdata/FINER-SQL-3B-v2](https://huggingface.co/griffith-bigdata/FINER-SQL-3B-v2)
 *   **Existing Prototype:** [sql_bleu.py](../../src/sql_bleu.py)
 
 ---
@@ -424,7 +424,7 @@ def load(name: Literal["sql_bleu", "valid_sql_rate", "wildcard_detector"] | str,
 18. **`tests/test_packaging_isolation.py` `(Create)`** — *Isolation & Config Tests:* Assert zero `evaluate`/`datasets`/`pyarrow`/`torch`/`transformers` imports in `sys.modules`, `load()` typed dispatch and unknown-name `ValueError`, single-writer `compute_*` concurrency checks, and `max_query_chars`/`max_input_chars` validation (`None`, `0`, `-1`, `True`).
 19. **`examples/bird_eval.py` `(Create)`** — *Benchmark CLI:* Implement `generate --output <jsonl> [--dialect sqlite|postgres|mysql] --seed 42 --sample-size 100 --max-new-tokens 2048 --model Qwen/Qwen2.5-Coder-3B-Instruct` (stratified by `difficulty` across `birdsql/bird_mini_dev` sorted by `question_id`, `baseline_inference/schemas/<dialect>.json` DDL parsed via `sqlglot.parse` into `{table: [cols]}`, `gold_sql = row["SQL"]`, `baseline_inference/prompt_template.txt`, `torch.bfloat16`, line-buffered per-row flush + `stderr` progress) and `score --input <jsonl> [--output <json>] [--dialect <dialect>]` (offline scoring across all 3 evaluators + `by_difficulty` via `extract_fenced_or_last_sql` with zero ML dependencies).
 20. **`examples/fixtures/bird_sample.jsonl` `(Create)`** — *E2E Fixture:* 5 synthetic multi-table BIRD JSONL rows matching `#19` schema (`<think>` block, fenced SQL + trailing prose, wildcard projection, unclosed `<think>` fail, missing column) for core-only tests.
-21. **`examples/README.md` `(Create)`** — *Example Docs:* Document `uv sync --extra examples`, `generate` vs. `score` flags, local 3B/1.5B vs. 24 GB+ CUDA 7B guidance, JSONL schema, and `difficulty` breakdown.
+21. **`examples/README.md` `(Create)`** — *Example Docs:* Document `uv sync --extra examples`, `generate` vs. `score` flags, local 3B/1.5B guidance, JSONL schema, and `difficulty` breakdown.
 
 ### Verification Plan
 
