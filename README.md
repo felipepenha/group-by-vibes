@@ -33,7 +33,7 @@ Text2SQL (NL2SQL) is one of the most relevant agentic tasks in the enterprise, y
 
 ## Installation
 
-Requires Python `>=3.10`.
+Install from [PyPI](https://pypi.org/project/group-by-vibes/) (requires Python `>=3.10`).
 
 ```bash
 # With uv
