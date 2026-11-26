@@ -65,6 +65,15 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/felipepenha/group-by-vibes
+      name: group-by-vibes on GitHub
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/group-by-vibes/
+      name: group-by-vibes on PyPI
+
 nav:
   - Home: index.md
   - Metrics:

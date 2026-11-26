@@ -18,7 +18,7 @@
 
 ## Installation
 
-Requires **Python `>=3.10`**. Core installation pulls only `sqlglot>=30.0.0,<31.0.0`:
+Install from [PyPI](https://pypi.org/project/group-by-vibes/) (requires **Python `>=3.10`**). Core installation pulls only `sqlglot>=30.0.0,<31.0.0`:
 
 ```bash
 # With uv
