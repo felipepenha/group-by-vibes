@@ -7,10 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-25
+
 ### Added
 
 - **`ComponentMatching` (`load("component_matching")`, `compute_component_matching`) and `ExactMatching` (`load("exact_matching")`, `compute_exact_matching`):** Dialect-general, bug-fixed `sqlglot` AST adaptations of Yu et al. (2018) Component Matching and Exact Matching sharing `src/group_by_vibes/matching.py`, supporting 12 SQL component keys (`select`, `select(no AGG)`, `where`, `where(no OP)`, `group(no Having)`, `group`, `order`, `and/or`, `IUEN`, `keywords`, `cte`, `join_on`), corrected corpus F1 / `and/or` denominators / hardness aggregate counting, Spider value-blind defaults with opt-in strict flags (`ignore_values`, `ignore_distinct`, `include_limit_value`, `include_join_conditions`, `skip_unparseable_predictions`), optional per-query `schema` and union-find `foreign_keys` (`kmap`) equivalence collapse, and `ForeignKeyPair` / `ForeignKeysLike` exports.
 - **Reference Benchmark & Report Sync (`examples/`):** Added DDL foreign-key extraction (`_ddl_to_foreign_keys`) and Component/Exact Matching scoring in `examples/bird_eval.py`, plus `**Exact Match Accuracy**`, `### Component Matching F1`, and per-difficulty Exact Match reporting in `.agents/skills/sync-examples/scripts/sync_examples.py`.
+- **Documentation Site (`docs/mkdocs/`, `mkdocs.yml`):** Material for MkDocs documentation site and automated GitHub Pages deployment (`.github/workflows/docs.yml`).
+- **PyPI Packaging & Release Automation:** Added complete PyPI metadata (PEP 639 `license-files`, author, classifiers, project URLs), lean sdist rules excluding `examples/`/`docs/`/`.agents/`, PEP 561 `py.typed` marker, absolute README asset/file links, and OIDC Trusted Publishing workflow (`.github/workflows/publish.yml`).
 
 ## [0.0.1] - 2026-11-24
 
@@ -26,5 +30,6 @@ Initial public pre-release of **group-by-vibes** — a standalone, `sqlglot`-onl
 - **Reference Benchmark (`examples/`):** Isolated `birdsql/bird_mini_dev` CLI (`examples/bird_eval.py`) supporting `qwen-3b`, `xiyansql-3b`, and `finer-sql-3b` presets, bundled 5-row fixture, 500-row SQLite Qwen/XiYanSQL logs and score reports, comparative report in `examples/README.md`, and `.agents/skills/sync-examples/`.
 - **CI, Governance & Brand Assets:** GitHub Actions CI (`.github/workflows/ci.yml` running `ruff`, `mypy`, `pytest --cov`, core smoke checks, and package builds across Python 3.10–3.12), `CONTRIBUTING.md`, `.github/CODEOWNERS`, issue/PR templates, and reproducible multi-platform brand assets under `docs/assets/`.
 
-[Unreleased]: https://github.com/felipepenha/group-by-vibes/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/felipepenha/group-by-vibes/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/felipepenha/group-by-vibes/compare/v0.0.1...v0.1.0
 [0.0.1]: https://github.com/felipepenha/group-by-vibes/releases/tag/v0.0.1

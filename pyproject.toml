@@ -1,17 +1,54 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
 name = "group-by-vibes"
-version = "0.0.1"
+version = "0.1.0"
 description = "Standalone deterministic Text2SQL evaluation package powered by sqlglot"
 readme = "README.md"
 license = "Apache-2.0"
+license-files = ["LICENSE"]
 requires-python = ">=3.10"
+authors = [
+    { name = "Felipe Campos Penha", email = "felipe.penha@owasp.org" },
+]
+maintainers = [
+    { name = "Felipe Campos Penha", email = "felipe.penha@owasp.org" },
+]
+keywords = [
+    "text2sql",
+    "nl2sql",
+    "sql",
+    "evaluation",
+    "metrics",
+    "sqlglot",
+    "llm",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Database",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Testing",
+    "Typing :: Typed",
+]
 dependencies = [
     "sqlglot>=30.0.0,<31.0.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/felipepenha/group-by-vibes"
+Documentation = "https://felipepenha.github.io/group-by-vibes/"
+Repository = "https://github.com/felipepenha/group-by-vibes"
+Issues = "https://github.com/felipepenha/group-by-vibes/issues"
+Changelog = "https://github.com/felipepenha/group-by-vibes/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 examples = [
@@ -32,6 +69,16 @@ dev = [
 docs = [
     "mkdocs>=1.6,<2.0",
     "mkdocs-material>=9.7,<10",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/LICENSE",
+    "/README.md",
+    "/CHANGELOG.md",
+    "/pyproject.toml",
 ]
 
 [tool.hatch.build.targets.wheel]

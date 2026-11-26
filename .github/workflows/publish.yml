@@ -1,0 +1,78 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build & verify distributions
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+        with:
+          python-version: "3.12"
+
+      - name: Verify release tag matches package version
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+        run: |
+          uv run --no-project python -c "
+          import os, tomllib
+          with open('pyproject.toml', 'rb') as f:
+              ver = tomllib.load(f)['project']['version']
+          tag = os.environ['TAG_NAME'].lstrip('v')
+          assert ver == tag, f'Release tag {os.environ[\"TAG_NAME\"]!r} does not match pyproject.toml version {ver!r}'
+          "
+
+      - name: Build sdist and wheel
+        run: uv build
+
+      - name: Validate distributions with twine
+        run: uvx twine check --strict dist/*
+
+      - name: Verify built wheel installs cleanly
+        run: |
+          uv run --isolated --no-project --with dist/*.whl python -c "
+          import tomllib, group_by_vibes as gbv
+          with open('pyproject.toml', 'rb') as f:
+              ver = tomllib.load(f)['project']['version']
+          assert gbv.__version__ == ver, f'{gbv.__version__!r} != {ver!r}'
+          assert gbv.compute_valid_sql_rate(['SELECT id FROM u'], [{'u': ['id']}], dialect='postgres')['valid_sql_rate'] == 1.0
+          "
+
+      - name: Upload distribution artifacts
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-dists
+          path: dist/
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: pypi
+      url: https://pypi.org/p/group-by-vibes
+    permissions:
+      id-token: write # Required for PyPI Trusted Publishing (OIDC)
+    steps:
+      - name: Download distribution artifacts
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: release-dists
+          path: dist/
+
+      - name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3

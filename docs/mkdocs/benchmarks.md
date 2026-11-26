@@ -20,7 +20,7 @@ See [`examples/README.md`](https://github.com/felipepenha/group-by-vibes/blob/ma
 
 ## Comparative Summary (SQLite, `n = 500`)
 
-Evaluated with `extract_fenced_or_last_sql`, `group_by_vibes` `0.0.1`, and `sqlglot` `30.33.0`:
+Evaluated with `extract_fenced_or_last_sql`, `group_by_vibes` `0.1.0`, and `sqlglot` `30.33.0`:
 
 | Metric | `griffith-bigdata/FINER-SQL-3B-v2` | `Qwen/Qwen2.5-Coder-3B-Instruct` | `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` |
 | :--- | ---: | ---: | ---: |

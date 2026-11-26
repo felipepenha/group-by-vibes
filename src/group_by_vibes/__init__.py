@@ -15,7 +15,7 @@ from .sql_bleu import SqlBleu, compute_sql_bleu, sentence_sql_bleu
 from .valid_sql_rate import ValidSqlRate, compute_valid_sql_rate
 from .wildcard_detector import WildcardDetector, compute_wildcard_detector
 
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 
 logging.getLogger("group_by_vibes").addHandler(logging.NullHandler())
 
