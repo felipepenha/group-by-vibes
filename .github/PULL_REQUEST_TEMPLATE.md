@@ -20,9 +20,10 @@ Closes #
 Confirm all applicable local checks pass:
 
 - [ ] `uv run pytest -v --cov=group_by_vibes --cov-branch`
-- [ ] `uv run ruff check src/ tests/ examples/ .agents/skills/sync-examples/scripts/`
+- [ ] `uv run ruff check src/ tests/ examples/ .agents/skills/`
 - [ ] `uv run mypy src/group_by_vibes/`
 - [ ] `uv run python .agents/skills/sync-examples/scripts/sync_examples.py verify` *(required if evaluators or `examples/` changed)*
+- [ ] `uv run python .agents/skills/sync-docs/scripts/sync_docs.py verify` *(required if evaluators, dependencies, or docs changed)*
 
 ## Checklist
 
@@ -30,4 +31,4 @@ Confirm all applicable local checks pass:
 - [ ] Linked to an open issue (or trivial typo/link fix)
 - [ ] `src/group_by_vibes/` remains `sqlglot`-only (no ML/Hub runtime imports)
 - [ ] Added or updated offline, deterministic unit tests in `tests/`
-- [ ] Updated relevant docs (`README.md`, `examples/README.md`, or `docs/designs/`)
+- [ ] Updated relevant docs (`README.md`, `docs/mkdocs/`, `examples/README.md`, or `docs/designs/`)

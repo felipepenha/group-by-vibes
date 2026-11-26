@@ -75,14 +75,15 @@ Run all required checks before opening a pull request:
 
 ```bash
 uv run pytest -v --cov=group_by_vibes --cov-branch
-uv run ruff check src/ tests/ examples/ .agents/skills/sync-examples/scripts/
+uv run ruff check src/ tests/ examples/ .agents/skills/
 uv run mypy src/group_by_vibes/
 ```
 
-If you modify evaluators or anything under `examples/`, also verify that example score logs and [`examples/README.md`](examples/README.md) are in sync:
+If you modify evaluators, documentation, or anything under `examples/`, also verify that example score logs, [`examples/README.md`](examples/README.md), and documentation stay in sync:
 
 ```bash
 uv run python .agents/skills/sync-examples/scripts/sync_examples.py verify
+uv run python .agents/skills/sync-docs/scripts/sync_docs.py verify
 ```
 
 To install optional benchmark inference dependencies for running `examples/bird_eval.py generate`:

@@ -142,7 +142,7 @@ from group_by_vibes import compute_component_matching, compute_exact_matching
 
 # Default Spider value-blind mode with optional per-query schema and foreign keys
 preds = ["SELECT u.id FROM users u JOIN orders o ON u.id = o.user_id WHERE 'A' = u.status"]
-refs = ["SELECT o.user_id FROM users usr JOIN orders ord ON usr.id = ord.user_id WHERE usr.status = 'Z'"]
+refs = ["SELECT ord.user_id FROM users usr JOIN orders ord ON usr.id = ord.user_id WHERE usr.status = 'Z'"]
 schemas = [{"users": ["id", "status"], "orders": ["user_id"]}]
 fks = [[("users.id", "orders.user_id")]]
 
@@ -184,7 +184,7 @@ Contributions are welcome—please open an issue before submitting a pull reques
 ```bash
 uv sync --group dev
 uv run pytest -v --cov=group_by_vibes --cov-branch
-uv run ruff check src/ tests/ examples/ .agents/skills/sync-examples/scripts/
+uv run ruff check src/ tests/ examples/ .agents/skills/
 uv run mypy src/group_by_vibes/
 ```
 
