@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **`ComponentMatching` (`load("component_matching")`, `compute_component_matching`) and `ExactMatching` (`load("exact_matching")`, `compute_exact_matching`):** Dialect-general, bug-fixed `sqlglot` AST adaptations of Yu et al. (2018) Component Matching and Exact Matching sharing `src/group_by_vibes/matching.py`, supporting 12 SQL component keys (`select`, `select(no AGG)`, `where`, `where(no OP)`, `group(no Having)`, `group`, `order`, `and/or`, `IUEN`, `keywords`, `cte`, `join_on`), corrected corpus F1 / `and/or` denominators / hardness aggregate counting, Spider value-blind defaults with opt-in strict flags (`ignore_values`, `ignore_distinct`, `include_limit_value`, `include_join_conditions`, `skip_unparseable_predictions`), optional per-query `schema` and union-find `foreign_keys` (`kmap`) equivalence collapse, and `ForeignKeyPair` / `ForeignKeysLike` exports.
+- **Reference Benchmark & Report Sync (`examples/`):** Added DDL foreign-key extraction (`_ddl_to_foreign_keys`) and Component/Exact Matching scoring in `examples/bird_eval.py`, plus `**Exact Match Accuracy**`, `### Component Matching F1`, and per-difficulty Exact Match reporting in `.agents/skills/sync-examples/scripts/sync_examples.py`.
+
 ## [0.0.1] - 2026-11-24
 
 Initial public pre-release of **group-by-vibes** — a standalone, `sqlglot`-only Python package for deterministic Text2SQL (NL2SQL) evaluation mirroring the Hugging Face `evaluate` interface.

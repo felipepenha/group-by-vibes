@@ -16,8 +16,11 @@ from typing import Any
 
 import group_by_vibes
 from group_by_vibes import compute_sql_bleu, extract_fenced_or_last_sql, normalize_dialect
+from group_by_vibes.matching import COMPONENT_TYPES
 
-BUILTIN_EVAL_KEYS = frozenset({"sql_bleu", "valid_sql_rate", "wildcard_detector"})
+BUILTIN_EVAL_KEYS = frozenset(
+    {"sql_bleu", "valid_sql_rate", "wildcard_detector", "component_matching", "exact_matching"}
+)
 IGNORED_REPORT_SUBFIELDS = frozenset({"syntax_valid_rate", "schema_grounded_rate"})
 FAILURE_KEY_ORDER = (
     "unknown_column",
@@ -410,6 +413,28 @@ def _render_headline_section(runs: Sequence[ScoredRun], delta_tag: str | None) -
         [f"`{st['exact']}`" for st in bstats],
         _fmt_delta_int(bstats[1]["exact"] - bstats[0]["exact"]) if is_pair else None,
     )
+    if all("exact_matching" in r.scores for r in runs):
+        em_list = [r.scores["exact_matching"] for r in runs]
+        em_vals = [
+            (
+                f"`{em['exact_match']:.1%}` (`{em['exact_match_count']}/{em['scored_count']}`)"
+                if em.get("exact_match") is not None
+                else "`N/A` (`0/0`)"
+            )
+            for em in em_list
+        ]
+        em_delta: str | None = None
+        if (
+            is_pair
+            and em_list[0].get("exact_match") is not None
+            and em_list[1].get("exact_match") is not None
+        ):
+            cnt_delta = em_list[1]["exact_match_count"] - em_list[0]["exact_match_count"]
+            em_delta = (
+                f"{_fmt_delta_pp(em_list[1]['exact_match'] - em_list[0]['exact_match'])} "
+                f"({_fmt_delta_int(cnt_delta)})"
+            )
+        add_row("**Exact Match Accuracy**", em_vals, em_delta)
     add_row(
         "**Valid SQL Rate**",
         [
@@ -468,11 +493,45 @@ def _render_headline_section(runs: Sequence[ScoredRun], delta_tag: str | None) -
     return [title, "", *_md_table(headers, aligns, rows)]
 
 
+def _render_component_matching_section(
+    runs: Sequence[ScoredRun], delta_tag: str | None
+) -> list[str]:
+    if not all("component_matching" in r.scores for r in runs):
+        return []
+    is_pair = len(runs) == 2 and delta_tag is not None
+    headers = ["Component"] + [f"`{r.model}`" for r in runs]
+    aligns = ["---"] + ["---:"] * len(runs)
+    if is_pair:
+        headers.append(f"Delta ({delta_tag})")
+        aligns.append("---:")
+
+    rows: list[list[str]] = []
+    for comp in COMPONENT_TYPES:
+        f1_vals = [
+            r.scores["component_matching"].get("components", {}).get(comp, {}).get("f1")
+            for r in runs
+        ]
+        if all(val is None for val in f1_vals):
+            continue
+        cells = [f"`{float(val):.3f}`" if val is not None else "`N/A`" for val in f1_vals]
+        if is_pair:
+            if f1_vals[0] is not None and f1_vals[1] is not None:
+                cells.append(_fmt_delta_float(float(f1_vals[1]) - float(f1_vals[0]), 3))
+            else:
+                cells.append("")
+        rows.append([f"`{comp}`", *cells])
+
+    return ["### Component Matching F1", "", *_md_table(headers, aligns, rows)]
+
+
 def _render_difficulty_section(runs: Sequence[ScoredRun], short_labels: Sequence[str]) -> list[str]:
     is_pair = len(runs) == 2
     diff_keys_all = {k for r in runs for k in r.scores.get("by_difficulty", {})}
     ordered_diffs = [d for d in DIFFICULTY_ORDER if d in diff_keys_all] + sorted(
         diff_keys_all - set(DIFFICULTY_ORDER)
+    )
+    has_exact = bool(ordered_diffs) and all(
+        "exact_match" in r.scores["by_difficulty"][d] for r in runs for d in ordered_diffs
     )
 
     headers = ["Difficulty", "Rows"]
@@ -489,6 +548,13 @@ def _render_difficulty_section(runs: Sequence[ScoredRun], short_labels: Sequence
     if is_pair:
         headers.append("Delta Valid SQL")
         aligns.append("---:")
+    if has_exact:
+        for label in short_labels:
+            headers.append(f"{label} Exact Match")
+            aligns.append("---:")
+        if is_pair:
+            headers.append("Delta Exact Match")
+            aligns.append("---:")
 
     table_rows: list[list[str]] = []
     for diff in ordered_diffs:
@@ -514,6 +580,19 @@ def _render_difficulty_section(runs: Sequence[ScoredRun], short_labels: Sequence
         )
         if is_pair:
             row.append(_fmt_delta_pp(slices[1]["valid_sql_rate"] - slices[0]["valid_sql_rate"]))
+        if has_exact:
+            for s in slices:
+                em_val = s.get("exact_match")
+                em_cnt = int(s.get("exact_match_count", 0))
+                row.append(f"`{em_val:.1%}` (`{em_cnt}`)" if em_val is not None else "`N/A` (`0`)")
+            if is_pair:
+                e0 = slices[0].get("exact_match")
+                e1 = slices[1].get("exact_match")
+                row.append(
+                    _fmt_delta_pp(float(e1) - float(e0))
+                    if e0 is not None and e1 is not None
+                    else ""
+                )
         table_rows.append(row)
 
     return ["### Breakdown by Difficulty", "", *_md_table(headers, aligns, table_rows)]
@@ -790,9 +869,16 @@ def _render_cohort_report(dialect: str, num_rows: int, runs: Sequence[ScoredRun]
             f"* **Score Reports:** {score_list}",
         ],
         _render_headline_section(runs, delta_tag),
-        _render_difficulty_section(runs, short_labels),
-        _render_database_section(runs, short_labels, dialect),
     ]
+    comp_section = _render_component_matching_section(runs, delta_tag)
+    if comp_section:
+        sections.append(comp_section)
+    sections.extend(
+        [
+            _render_difficulty_section(runs, short_labels),
+            _render_database_section(runs, short_labels, dialect),
+        ]
+    )
     paired = _render_paired_section(runs, short_labels)
     if paired:
         sections.append(paired)

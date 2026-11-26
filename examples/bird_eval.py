@@ -22,12 +22,15 @@ from sqlglot import exp
 
 from group_by_vibes import __version__ as gbv_version
 from group_by_vibes import (
+    compute_component_matching,
+    compute_exact_matching,
     compute_sql_bleu,
     compute_valid_sql_rate,
     compute_wildcard_detector,
     extract_fenced_or_last_sql,
     normalize_dialect,
 )
+from group_by_vibes.dialects import primary_identifier_delimiter
 
 DATASET_REPO = "birdsql/bird_mini_dev"
 DEFAULT_MODEL = "Qwen/Qwen2.5-Coder-3B-Instruct"
@@ -74,6 +77,88 @@ def _ddl_to_schema_dict(ddl: str, dialect: str) -> dict[str, list[str]]:
             if table_name:
                 schema[table_name] = cols
     return schema
+
+
+def _ddl_to_foreign_keys(ddl: str, dialect: str) -> list[list[str]]:
+    """Extract deduplicated `[[child_table.col, parent_table.col], ...]` pairs from DDL."""
+    norm_dialect = normalize_dialect(dialect)
+    open_q, close_q = primary_identifier_delimiter(norm_dialect)
+    special_chars = {".", open_q, close_q, '"', "`", "[", "]"}
+
+    def format_ident(name: str) -> str:
+        if any(ch.isspace() for ch in name) or any(ch in name for ch in special_chars):
+            escaped = name.replace(close_q, close_q * 2)
+            return f"{open_q}{escaped}{close_q}"
+        return name
+
+    def table_name(node: exp.Expr | None) -> str:
+        if isinstance(node, exp.Table):
+            return node.name
+        return str(node) if node is not None else ""
+
+    pairs: set[tuple[str, str]] = set()
+    for stmt in sqlglot.parse(ddl, read=norm_dialect):
+        if not isinstance(stmt, exp.Create) or not isinstance(stmt.this, exp.Schema):
+            continue
+        child_tbl = table_name(stmt.this.this)
+        if not child_tbl:
+            continue
+
+        for fk in stmt.this.find_all(exp.ForeignKey):
+            ref = fk.args.get("reference")
+            if isinstance(ref, exp.Reference) and isinstance(ref.this, exp.Schema):
+                parent_tbl = table_name(ref.this.this)
+                child_cols = [
+                    c.name for c in fk.expressions if isinstance(c, exp.Identifier) and c.name
+                ]
+                parent_cols = [
+                    c.name for c in ref.this.expressions if isinstance(c, exp.Identifier) and c.name
+                ]
+                if parent_tbl and len(child_cols) == len(parent_cols) and len(child_cols) > 0:
+                    for cc, pc in zip(child_cols, parent_cols, strict=True):
+                        pairs.add(
+                            (
+                                f"{format_ident(child_tbl)}.{format_ident(cc)}",
+                                f"{format_ident(parent_tbl)}.{format_ident(pc)}",
+                            )
+                        )
+
+        for col_def in stmt.this.expressions:
+            if not isinstance(col_def, exp.ColumnDef) or not col_def.name:
+                continue
+            for constraint in col_def.constraints:
+                if not isinstance(constraint, exp.ColumnConstraint):
+                    continue
+                kind = constraint.kind
+                if isinstance(kind, exp.Reference) and isinstance(kind.this, exp.Schema):
+                    parent_tbl = table_name(kind.this.this)
+                    parent_cols = [
+                        c.name
+                        for c in kind.this.expressions
+                        if isinstance(c, exp.Identifier) and c.name
+                    ]
+                    if parent_tbl and len(parent_cols) == 1:
+                        pairs.add(
+                            (
+                                f"{format_ident(child_tbl)}.{format_ident(col_def.name)}",
+                                f"{format_ident(parent_tbl)}.{format_ident(parent_cols[0])}",
+                            )
+                        )
+
+    return [[a, b] for a, b in sorted(pairs)]
+
+
+def _coerce_row_foreign_keys(
+    rows: Sequence[dict[str, Any]],
+) -> list[list[tuple[str, str]] | None]:
+    out: list[list[tuple[str, str]] | None] = []
+    for row in rows:
+        raw_fks = row.get("foreign_keys")
+        if raw_fks is None:
+            out.append(None)
+        else:
+            out.append([(str(pair[0]), str(pair[1])) for pair in raw_fks])
+    return out
 
 
 def _proportional_counts(
@@ -174,6 +259,9 @@ def run_generate(args: argparse.Namespace) -> int:
     parsed_schemas_by_db = {
         db_id: _ddl_to_schema_dict(ddl, dialect=dialect) for db_id, ddl in raw_ddl_by_db.items()
     }
+    parsed_fks_by_db = {
+        db_id: _ddl_to_foreign_keys(ddl, dialect=dialect) for db_id, ddl in raw_ddl_by_db.items()
+    }
     prompt_template = prompt_path.read_text(encoding="utf-8")
     if args.sample_size is None:
         sampled = sorted(questions, key=lambda item: int(item["question_id"]))
@@ -205,6 +293,7 @@ def run_generate(args: argparse.Namespace) -> int:
             db_id = str(row["db_id"])
             ddl = raw_ddl_by_db[db_id]
             schema = parsed_schemas_by_db[db_id]
+            foreign_keys = parsed_fks_by_db[db_id]
             question = str(row["question"])
             evidence = str(row.get("evidence") or "")
 
@@ -246,6 +335,7 @@ def run_generate(args: argparse.Namespace) -> int:
                 "question": question,
                 "evidence": evidence,
                 "schema": schema,
+                "foreign_keys": foreign_keys,
                 "gold_sql": row["SQL"],
                 "raw_completion": raw_completion,
                 "truncated": truncated,
@@ -276,6 +366,7 @@ def run_score(args: argparse.Namespace) -> int:
     completions = [str(row["raw_completion"]) for row in rows]
     gold_sqls = [str(row["gold_sql"]) for row in rows]
     schemas = [row.get("schema") for row in rows]
+    foreign_keys = _coerce_row_foreign_keys(rows)
 
     sql_bleu_res = compute_sql_bleu(
         completions,
@@ -297,6 +388,24 @@ def run_score(args: argparse.Namespace) -> int:
         extractor=extract_fenced_or_last_sql,
         include_per_example=True,
     )
+    comp_match_res = compute_component_matching(
+        completions,
+        gold_sqls,
+        schemas=schemas,
+        foreign_keys=foreign_keys,
+        dialect=dialect,
+        extractor=extract_fenced_or_last_sql,
+        include_per_example=True,
+    )
+    exact_match_res = compute_exact_matching(
+        completions,
+        gold_sqls,
+        schemas=schemas,
+        foreign_keys=foreign_keys,
+        dialect=dialect,
+        extractor=extract_fenced_or_last_sql,
+        include_per_example=True,
+    )
 
     by_diff: dict[str, dict[str, Any]] = {}
     diff_groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -306,6 +415,7 @@ def run_score(args: argparse.Namespace) -> int:
         d_preds = [str(r["raw_completion"]) for r in items]
         d_golds = [str(r["gold_sql"]) for r in items]
         d_schemas = [r.get("schema") for r in items]
+        d_fks = _coerce_row_foreign_keys(items)
         d_bleu = compute_sql_bleu(
             d_preds, d_golds, dialect=dialect, extractor=extract_fenced_or_last_sql
         )
@@ -315,6 +425,14 @@ def run_score(args: argparse.Namespace) -> int:
         d_wild = compute_wildcard_detector(
             d_preds, dialect=dialect, extractor=extract_fenced_or_last_sql
         )
+        d_exact = compute_exact_matching(
+            d_preds,
+            d_golds,
+            schemas=d_schemas,
+            foreign_keys=d_fks,
+            dialect=dialect,
+            extractor=extract_fenced_or_last_sql,
+        )
         by_diff[diff] = {
             "num_rows": len(items),
             "bleu": d_bleu["bleu"],
@@ -322,6 +440,8 @@ def run_score(args: argparse.Namespace) -> int:
             "syntax_valid_rate": d_valid["syntax_valid_rate"],
             "schema_grounded_rate": d_valid["schema_grounded_rate"],
             "wildcard_rate": d_wild["wildcard_rate"],
+            "exact_match": d_exact["exact_match"],
+            "exact_match_count": d_exact["exact_match_count"],
         }
 
     summary: dict[str, Any] = {
@@ -336,6 +456,8 @@ def run_score(args: argparse.Namespace) -> int:
         "sql_bleu": sql_bleu_res,
         "valid_sql_rate": valid_sql_res,
         "wildcard_detector": wildcard_res,
+        "component_matching": comp_match_res,
+        "exact_matching": exact_match_res,
         "by_difficulty": by_diff,
     }
 

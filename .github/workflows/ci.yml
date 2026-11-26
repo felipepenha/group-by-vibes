@@ -117,4 +117,8 @@ jobs:
           assert gbv.__version__
           res = gbv.compute_valid_sql_rate(['SELECT id FROM u'], [{'u': ['id']}], dialect='postgres')
           assert res['valid_sql_rate'] == 1.0
+          assert isinstance(gbv.load('component_matching'), gbv.ComponentMatching)
+          assert isinstance(gbv.load('exact_matching'), gbv.ExactMatching)
+          assert gbv.compute_exact_matching(['SELECT a, b FROM t'], ['SELECT b, a FROM t'], dialect='postgres')['exact_match'] == 1.0
+          assert gbv.compute_component_matching(['SELECT a FROM t'], ['SELECT a FROM t'], dialect='postgres')['components']['select']['f1'] == 1.0
           "

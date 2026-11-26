@@ -82,6 +82,8 @@ valid_sql.compute()["valid_sql_rate"]
 | Name | Type | Class | Stateless Helper | What It Evaluates |
 | :--- | :--- | :--- | :--- | :--- |
 | `load("sql_bleu")` | `Metric` | `SqlBleu` | `compute_sql_bleu`, `sentence_sql_bleu` | AST-canonicalized n-gram overlap against reference SQL ([Chen et al., 2019](#references)); reports `bleu`, `precisions`, `translation_length`, `parse_success_rate`, and `reference_parse_success_rate`. |
+| `load("component_matching")` | `Metric` | `ComponentMatching` | `compute_component_matching` | Clause-level exact-set precision, recall, and F1 across 12 SQL components and 5 Spider hardness buckets ([Yu et al., 2018](#references), dialect-general `sqlglot` AST adaptation); defaults to Spider value-blind mode with opt-in strict flags and optional `schema`/`foreign_keys`. |
+| `load("exact_matching")` | `Metric` | `ExactMatching` | `compute_exact_matching` | Order-insensitive structural exact-match accuracy across all 12 SQL components plus canonical `FROM` table/subquery multisets ([Yu et al., 2018](#references), dialect-general `sqlglot` AST adaptation); supports Spider value-blind defaults, opt-in strict flags, and optional `schema`/`foreign_keys`. |
 | `load("valid_sql_rate")` | `Measurement` | `ValidSqlRate` | `compute_valid_sql_rate` | Lenient dialect-aware SQL syntax validation (rejecting empty inputs, multi-statement strings, and `exp.Command` fallbacks) plus optional per-query schema grounding (tables & columns) with 8-key `failure_counts`. |
 | `load("wildcard_detector")` | `Measurement` | `WildcardDetector` | `compute_wildcard_detector` | Projection wildcard rate (`SELECT *`, `table.*`, `* EXCEPT`/`EXCLUDE` -> `1`), ignoring `COUNT(*)`, `EXISTS (SELECT * ...)`, `RETURNING *`, and `*` arithmetic (`0`). |
 
@@ -131,9 +133,39 @@ print(compute_wildcard_detector(raw_completions, dialect="sqlite", extractor=ext
 print(compute_sql_bleu(raw_completions, ["SELECT name FROM users WHERE 1 = id"], dialect="sqlite", extractor=extract_fenced_or_last_sql))
 ```
 
+### Component & Exact Matching (Spider Defaults vs. Strict Mode)
+
+```python
+from group_by_vibes import compute_component_matching, compute_exact_matching
+
+# Default Spider value-blind mode with optional per-query schema and foreign keys
+preds = ["SELECT u.id FROM users u JOIN orders o ON u.id = o.user_id WHERE 'A' = u.status"]
+refs = ["SELECT o.user_id FROM users usr JOIN orders ord ON usr.id = ord.user_id WHERE usr.status = 'Z'"]
+schemas = [{"users": ["id", "status"], "orders": ["user_id"]}]
+fks = [[("users.id", "orders.user_id")]]
+
+print(compute_exact_matching(preds, refs, schemas=schemas, foreign_keys=fks, dialect="postgres")["exact_match"])
+# 1.0
+
+# Opt-in strict mode enforces literal values, DISTINCT, LIMIT values, and JOIN ON predicates
+strict = compute_component_matching(
+    preds,
+    refs,
+    schemas=schemas,
+    foreign_keys=fks,
+    dialect="postgres",
+    ignore_values=False,
+    ignore_distinct=False,
+    include_limit_value=True,
+    include_join_conditions=True,
+)
+print(strict["components"]["where"]["f1"])
+# 0.0
+```
+
 ### Thread Safety (Out-of-Band Runtime Screening)
 
-Stateful `BaseEvaluator` instances (`SqlBleu`, `ValidSqlRate`, `WildcardDetector`) maintain single-writer accumulators without locks. When screening queries across background worker threads, either instantiate one evaluator per worker, funnel updates through a single aggregator thread, or call the stateless `compute_*` functions directly.
+Stateful `BaseEvaluator` instances (`SqlBleu`, `ValidSqlRate`, `WildcardDetector`, `ComponentMatching`, `ExactMatching`) maintain single-writer accumulators without locks. When screening queries across background worker threads, either instantiate one evaluator per worker, funnel updates through a single aggregator thread, or call the stateless `compute_*` functions directly.
 
 ---
 
@@ -159,6 +191,7 @@ uv run mypy src/group_by_vibes/
 ## References
 
 * **SQL-BLEU:** Fuxiang Chen, Seung-won Hwang, Jaegul Choo, Jung-Woo Ha, and Sunghun Kim (2019). [*NL2pSQL: Generating Pseudo-SQL Queries from Under-Specified Natural Language Questions*](https://aclanthology.org/D19-1262/). EMNLP-IJCNLP 2019, pages 2603–2613. DOI: `10.18653/v1/D19-1262`.
+* **Component Matching & Exact Matching:** Tao Yu, Rui Zhang, Kai Yang, Michihiro Yasunaga, Dongxu Wang, Zifan Li, James Ma, Irene Li, Qingning Yao, Shanelle Roman, Zilin Zhang, and Dragomir R. Radev (2018). [*Spider: A Large-Scale Human-Labeled Dataset for Complex and Cross-Domain Semantic Parsing and Text-to-SQL Task*](https://arxiv.org/abs/1809.08887). EMNLP 2018, pages 3911–3921. Implemented as a dialect-general, bug-fixed `sqlglot` AST adaptation of [`taoyds/spider`](https://github.com/taoyds/spider) without `nltk` or flat dict AST limitations ([design doc](docs/designs/component_and_exact_matching.md)).
 
 ---
 
