@@ -5,6 +5,7 @@
 # group-by-vibes
 
 [![CI](https://img.shields.io/github/actions/workflow/status/felipepenha/group-by-vibes/ci.yml?branch=main&label=CI)](https://github.com/felipepenha/group-by-vibes/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-6c6ef5)](https://felipepenha.github.io/group-by-vibes/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![License: Apache-2.0](https://img.shields.io/github/license/felipepenha/group-by-vibes)](LICENSE)
 [![Core dependency: sqlglot only](https://img.shields.io/badge/deps-sqlglot%20only-2E7D32)](pyproject.toml)
@@ -16,7 +17,7 @@ Text2SQL (NL2SQL) is one of the most relevant agentic tasks in the enterprise, y
 
 **`group-by-vibes`** is a focused, niche Python package built specifically for deterministic Text2SQL evaluation—not a general NLP benchmark suite. It mirrors the [Hugging Face `evaluate`](https://github.com/huggingface/evaluate) interface (`load`, `add`, `add_batch`, `compute`) so teams can adopt it with familiar `Metric` and `Measurement` semantics, while providing specialized Text2SQL metrics and measurements not covered in `evaluate`, backed only by `sqlglot` with zero heavy ML runtime dependencies.
 
-[Installation](#installation) · [Quickstart](#quickstart) · [Available Evaluators](#available-evaluators) · [Usage Patterns](#usage-patterns) · [Reference Benchmark](#reference-benchmark) · [Contributing](#contributing) · [References](#references)
+[Documentation](https://felipepenha.github.io/group-by-vibes/) · [Installation](#installation) · [Quickstart](#quickstart) · [Available Evaluators](#available-evaluators) · [Usage Patterns](#usage-patterns) · [Reference Benchmark](#reference-benchmark) · [Contributing](#contributing) · [References](#references)
 
 ---
 

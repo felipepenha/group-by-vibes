@@ -1,0 +1,34 @@
+/* Brand-aligned overrides harmonizing with the #8C8DFE periwinkle mark. */
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #5254d8;
+  --md-primary-fg-color--light: #8c8dfe;
+  --md-primary-fg-color--dark: #3b3db8;
+  --md-accent-fg-color: #6c6ef5;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #6366f1;
+  --md-primary-fg-color--light: #8c8dfe;
+  --md-primary-fg-color--dark: #4338ca;
+  --md-accent-fg-color: #8c8dfe;
+}
+
+.gbv-hero-banner {
+  display: block;
+  max-width: 720px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 12px;
+}
+
+[data-md-color-scheme="slate"] .gbv-hero-banner {
+  background-color: #8c8dfe;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.md-typeset table:not([class]) td:first-child code {
+  white-space: nowrap;
+}

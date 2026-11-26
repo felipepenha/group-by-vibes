@@ -122,3 +122,25 @@ jobs:
           assert gbv.compute_exact_matching(['SELECT a, b FROM t'], ['SELECT b, a FROM t'], dialect='postgres')['exact_match'] == 1.0
           assert gbv.compute_component_matching(['SELECT a FROM t'], ['SELECT a FROM t'], dialect='postgres')['components']['select']['f1'] == 1.0
           "
+
+  docs:
+    name: Docs (mkdocs --strict)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+        with:
+          enable-cache: true
+          python-version: "3.12"
+
+      - name: Install docs dependencies
+        run: uv sync --locked --only-group docs
+
+      - name: Build strict MkDocs site
+        run: uv run --no-sync mkdocs build --strict

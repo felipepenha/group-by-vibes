@@ -1,0 +1,80 @@
+site_name: group-by-vibes
+site_description: Standalone deterministic Text2SQL evaluation package powered by sqlglot
+site_url: https://felipepenha.github.io/group-by-vibes/
+repo_url: https://github.com/felipepenha/group-by-vibes
+repo_name: felipepenha/group-by-vibes
+edit_uri: edit/main/docs/mkdocs/
+
+docs_dir: docs/mkdocs
+site_dir: site
+
+copyright: Copyright &copy; 2026 Felipe Campos Penha — Apache-2.0 License
+
+theme:
+  name: material
+  logo: assets/icon-256-transparent.png
+  favicon: assets/mkdocs-favicon-64.png
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
+
+nav:
+  - Home: index.md
+  - Metrics:
+      - metrics/index.md
+      - SQL-BLEU: metrics/sql-bleu.md
+      - Component Matching: metrics/component-matching.md
+      - Exact Matching: metrics/exact-matching.md
+      - Adapting Spider to sqlglot: metrics/spider-to-sqlglot.md
+  - Measurements:
+      - measurements/index.md
+      - Valid SQL Rate: measurements/valid-sql-rate.md
+      - Wildcard Detector: measurements/wildcard-detector.md
+  - Benchmarks: benchmarks.md
