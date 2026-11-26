@@ -5,7 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.1] - 2026-11-25
+
+### Added
+
+- **Release & Documentation Sync Skills (`.agents/skills/`):** Added `release` (`.agents/skills/release/scripts/release.py`) and `sync-docs` (`.agents/skills/sync-docs/scripts/sync_docs.py`) workspace skills with offline unit tests (`tests/test_release_and_sync_docs.py`), widened CI `ruff` linting to `.agents/skills/`, and wired `sync_docs.py verify` into `.github/workflows/ci.yml`.
+
+### Changed
+
+- **PyPI Installation Docs & Site Links (`README.md`, `docs/mkdocs/index.md`, `mkdocs.yml`):** Updated installation instructions from `git+https://...` to `uv add group-by-vibes` / `pip install group-by-vibes`, added the PyPI badge and homepage link in `README.md` and `docs/mkdocs/index.md`, added GitHub/PyPI footer links in `mkdocs.yml`, and aligned `CONTRIBUTING.md` and `.github/PULL_REQUEST_TEMPLATE.md` verification commands with CI.
+
+### Fixed
+
+- **README Example Typo (`README.md`):** Fixed the table alias typo (`o.user_id` -> `ord.user_id`) in the Component/Exact Matching example so it outputs `1.0` as documented.
 
 ## [0.1.0] - 2026-11-25
 

@@ -14,6 +14,8 @@ from typing import Any
 
 import pytest
 
+import group_by_vibes
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RELEASE_SCRIPT = REPO_ROOT / ".agents" / "skills" / "release" / "scripts" / "release.py"
 SYNC_DOCS_SCRIPT = REPO_ROOT / ".agents" / "skills" / "sync-docs" / "scripts" / "sync_docs.py"
@@ -213,7 +215,7 @@ def test_sync_docs_run_restores_benchmarks_and_is_idempotent(tmp_path: Path) -> 
 
     # Introduce stale version & metric number while keeping prose + admonition intact
     stale_benchmarks = expected_benchmarks.replace(
-        "`group_by_vibes` `0.1.0`", "`group_by_vibes` `0.0.1`"
+        f"`group_by_vibes` `{group_by_vibes.__version__}`", "`group_by_vibes` `0.0.1`"
     ).replace(
         "| **SQL-BLEU** | `0.2646` |",
         "| **SQL-BLEU** | `0.9999` |",
