@@ -114,6 +114,1099 @@
       0
     ]
   },
+  "component_matching": {
+    "components": {
+      "select": {
+        "precision": 0.5,
+        "recall": 0.4,
+        "f1": 0.4444444444444445,
+        "pred_count": 4,
+        "label_count": 5
+      },
+      "select(no AGG)": {
+        "precision": 0.5,
+        "recall": 0.4,
+        "f1": 0.4444444444444445,
+        "pred_count": 4,
+        "label_count": 5
+      },
+      "where": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "pred_count": 2,
+        "label_count": 3
+      },
+      "where(no OP)": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "pred_count": 2,
+        "label_count": 3
+      },
+      "group(no Having)": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "pred_count": 0,
+        "label_count": 0
+      },
+      "group": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "pred_count": 0,
+        "label_count": 0
+      },
+      "order": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "pred_count": 0,
+        "label_count": 0
+      },
+      "and/or": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "pred_count": 1,
+        "label_count": 1
+      },
+      "IUEN": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "pred_count": 0,
+        "label_count": 0
+      },
+      "keywords": {
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571,
+        "pred_count": 3,
+        "label_count": 4
+      },
+      "cte": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "pred_count": 1,
+        "label_count": 1
+      },
+      "join_on": {
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "pred_count": 0,
+        "label_count": 0
+      }
+    },
+    "by_hardness": {
+      "easy": {
+        "count": 3,
+        "components": {
+          "select": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "pred_count": 2,
+            "label_count": 3
+          },
+          "select(no AGG)": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "pred_count": 2,
+            "label_count": 3
+          },
+          "where": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "pred_count": 1,
+            "label_count": 2
+          },
+          "where(no OP)": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "pred_count": 1,
+            "label_count": 2
+          },
+          "group(no Having)": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "group": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "order": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "and/or": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "IUEN": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "keywords": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "pred_count": 1,
+            "label_count": 2
+          },
+          "cte": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "join_on": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          }
+        }
+      },
+      "medium": {
+        "count": 1,
+        "components": {
+          "select": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "select(no AGG)": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "where": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "where(no OP)": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "group(no Having)": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "group": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "order": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "and/or": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "IUEN": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "keywords": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "cte": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "join_on": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          }
+        }
+      },
+      "hard": {
+        "count": 1,
+        "components": {
+          "select": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "select(no AGG)": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "where": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "where(no OP)": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "group(no Having)": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "group": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "order": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "and/or": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "IUEN": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "keywords": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "cte": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "join_on": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          }
+        }
+      },
+      "extra": {
+        "count": 0,
+        "components": {
+          "select": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "select(no AGG)": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "where": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "where(no OP)": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "group(no Having)": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "group": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "order": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "and/or": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "IUEN": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "keywords": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "cte": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "join_on": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          }
+        }
+      },
+      "all": {
+        "count": 5,
+        "components": {
+          "select": {
+            "precision": 0.5,
+            "recall": 0.4,
+            "f1": 0.4444444444444445,
+            "pred_count": 4,
+            "label_count": 5
+          },
+          "select(no AGG)": {
+            "precision": 0.5,
+            "recall": 0.4,
+            "f1": 0.4444444444444445,
+            "pred_count": 4,
+            "label_count": 5
+          },
+          "where": {
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "pred_count": 2,
+            "label_count": 3
+          },
+          "where(no OP)": {
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "pred_count": 2,
+            "label_count": 3
+          },
+          "group(no Having)": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "group": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "order": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "and/or": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "IUEN": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          },
+          "keywords": {
+            "precision": 1.0,
+            "recall": 0.75,
+            "f1": 0.8571428571428571,
+            "pred_count": 3,
+            "label_count": 4
+          },
+          "cte": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "pred_count": 1,
+            "label_count": 1
+          },
+          "join_on": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "pred_count": 0,
+            "label_count": 0
+          }
+        }
+      }
+    },
+    "scored_count": 5,
+    "parsed_count": 4,
+    "unparseable_count": 1,
+    "parse_success_rate": 0.8,
+    "reference_parse_success_rate": 1.0,
+    "schema_applied_count": 5,
+    "foreign_keys_applied_count": 0,
+    "num_examples": 5,
+    "dialect": "sqlite",
+    "ignore_values": true,
+    "ignore_distinct": true,
+    "include_limit_value": false,
+    "include_join_conditions": false,
+    "skip_unparseable_predictions": false,
+    "per_example": [
+      {
+        "hardness": "medium",
+        "prediction_parsed": true,
+        "schema_applied": true,
+        "foreign_keys_applied": false,
+        "components": {
+          "select": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "select(no AGG)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "where": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 2,
+            "pred_total": 2
+          },
+          "where(no OP)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 2,
+            "pred_total": 2
+          },
+          "group(no Having)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "group": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "order": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "and/or": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "IUEN": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "keywords": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "cte": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "join_on": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          }
+        }
+      },
+      {
+        "hardness": "easy",
+        "prediction_parsed": true,
+        "schema_applied": true,
+        "foreign_keys_applied": false,
+        "components": {
+          "select": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "select(no AGG)": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "where": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "where(no OP)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "group(no Having)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "group": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "order": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "and/or": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "IUEN": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "keywords": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "cte": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "join_on": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          }
+        }
+      },
+      {
+        "hardness": "hard",
+        "prediction_parsed": true,
+        "schema_applied": true,
+        "foreign_keys_applied": false,
+        "components": {
+          "select": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "select(no AGG)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "where": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "where(no OP)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "group(no Having)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "group": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "order": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "and/or": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "IUEN": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "keywords": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "cte": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "join_on": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          }
+        }
+      },
+      {
+        "hardness": "easy",
+        "prediction_parsed": false,
+        "schema_applied": true,
+        "foreign_keys_applied": false,
+        "components": {
+          "select": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 0
+          },
+          "select(no AGG)": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 0
+          },
+          "where": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 0
+          },
+          "where(no OP)": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 0
+          },
+          "group(no Having)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "group": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "order": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "and/or": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "IUEN": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "keywords": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 0
+          },
+          "cte": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "join_on": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          }
+        }
+      },
+      {
+        "hardness": "easy",
+        "prediction_parsed": true,
+        "schema_applied": true,
+        "foreign_keys_applied": false,
+        "components": {
+          "select": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "select(no AGG)": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "label_total": 1,
+            "pred_total": 1
+          },
+          "where": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "where(no OP)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "group(no Having)": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "group": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "order": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "and/or": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "IUEN": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "keywords": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "cte": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          },
+          "join_on": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "label_total": 0,
+            "pred_total": 0
+          }
+        }
+      }
+    ]
+  },
+  "exact_matching": {
+    "exact_match": 0.4,
+    "exact_match_count": 2,
+    "by_hardness": {
+      "easy": {
+        "count": 3,
+        "exact_match": 0.0,
+        "exact_match_count": 0
+      },
+      "medium": {
+        "count": 1,
+        "exact_match": 1.0,
+        "exact_match_count": 1
+      },
+      "hard": {
+        "count": 1,
+        "exact_match": 1.0,
+        "exact_match_count": 1
+      },
+      "extra": {
+        "count": 0,
+        "exact_match": null,
+        "exact_match_count": 0
+      },
+      "all": {
+        "count": 5,
+        "exact_match": 0.4,
+        "exact_match_count": 2
+      }
+    },
+    "scored_count": 5,
+    "parsed_count": 4,
+    "unparseable_count": 1,
+    "parse_success_rate": 0.8,
+    "reference_parse_success_rate": 1.0,
+    "schema_applied_count": 5,
+    "foreign_keys_applied_count": 0,
+    "num_examples": 5,
+    "dialect": "sqlite",
+    "ignore_values": true,
+    "ignore_distinct": true,
+    "include_limit_value": false,
+    "include_join_conditions": false,
+    "skip_unparseable_predictions": false,
+    "per_example": [
+      {
+        "exact_match": 1,
+        "hardness": "medium",
+        "prediction_parsed": true,
+        "schema_applied": true,
+        "foreign_keys_applied": false
+      },
+      {
+        "exact_match": 0,
+        "hardness": "easy",
+        "prediction_parsed": true,
+        "schema_applied": true,
+        "foreign_keys_applied": false
+      },
+      {
+        "exact_match": 1,
+        "hardness": "hard",
+        "prediction_parsed": true,
+        "schema_applied": true,
+        "foreign_keys_applied": false
+      },
+      {
+        "exact_match": 0,
+        "hardness": "easy",
+        "prediction_parsed": false,
+        "schema_applied": true,
+        "foreign_keys_applied": false
+      },
+      {
+        "exact_match": 0,
+        "hardness": "easy",
+        "prediction_parsed": true,
+        "schema_applied": true,
+        "foreign_keys_applied": false
+      }
+    ]
+  },
   "by_difficulty": {
     "challenging": {
       "num_rows": 1,
@@ -121,7 +1214,9 @@
       "valid_sql_rate": 1.0,
       "syntax_valid_rate": 1.0,
       "schema_grounded_rate": 1.0,
-      "wildcard_rate": 0.0
+      "wildcard_rate": 0.0,
+      "exact_match": 1.0,
+      "exact_match_count": 1
     },
     "moderate": {
       "num_rows": 2,
@@ -129,7 +1224,9 @@
       "valid_sql_rate": 0.5,
       "syntax_valid_rate": 1.0,
       "schema_grounded_rate": 0.5,
-      "wildcard_rate": 0.0
+      "wildcard_rate": 0.0,
+      "exact_match": 0.5,
+      "exact_match_count": 1
     },
     "simple": {
       "num_rows": 2,
@@ -137,7 +1234,9 @@
       "valid_sql_rate": 0.5,
       "syntax_valid_rate": 0.5,
       "schema_grounded_rate": 1.0,
-      "wildcard_rate": 1.0
+      "wildcard_rate": 1.0,
+      "exact_match": 0.0,
+      "exact_match_count": 0
     }
   }
 }

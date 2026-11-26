@@ -41,7 +41,7 @@ tail -f examples/logs/bird_qwen_3b.jsonl
 ```
 
 * **Sampling:** Evaluates the full split sorted by `question_id` by default, or takes a deterministic stratified sample across `difficulty` (`simple`, `moderate`, `challenging`) when `--sample-size` is specified.
-* **Schema Mapping:** Parses `baseline_inference/schemas/<dialect>.json` `CREATE TABLE` DDL via `sqlglot.parse` into per-database `{table: [columns]}` dicts for `ValidSqlRate`.
+* **Schema Mapping:** Parses `baseline_inference/schemas/<dialect>.json` `CREATE TABLE` DDL via `sqlglot.parse` into per-database `{table: [columns]}` dicts for `ValidSqlRate` / matching qualification and `foreign_keys` (`[child_table.col, parent_table.col]` pairs) for `ComponentMatching` / `ExactMatching` equivalence collapse.
 * **Prompting:** Uses `bird_mini_dev`'s `baseline_inference/prompt_template.txt` with `question` and `evidence`.
 
 ### 2. Offline Re-Scoring (`score`, zero ML dependencies required)
@@ -68,11 +68,11 @@ uv run python examples/bird_eval.py score \
   --output examples/logs/bird_finer_sql_3b_scores.json
 ```
 
-Omit `--output` to print the JSON report to `stdout` instead of writing a file. Scoring evaluates saved JSONL rows across `SqlBleu`, `ValidSqlRate`, `WildcardDetector`, and per-`difficulty` slices using `extract_fenced_or_last_sql`.
+Omit `--output` to print the JSON report to `stdout` instead of writing a file. Scoring evaluates saved JSONL rows across `SqlBleu`, `ValidSqlRate`, `WildcardDetector`, `ComponentMatching`, `ExactMatching`, and per-`difficulty` slices using `extract_fenced_or_last_sql`.
 
 ## Saved JSONL Schema
 
-Each row stores: `question_id`, `db_id`, `difficulty`, `dialect`, `question`, `evidence`, `schema`, `gold_sql`, `raw_completion`, `truncated`, `seed`, `model`, `extractor`, `group_by_vibes_version`, and `sqlglot_version`.
+Each row stores: `question_id`, `db_id`, `difficulty`, `dialect`, `question`, `evidence`, `schema`, `foreign_keys` (emitted on newly generated logs), `gold_sql`, `raw_completion`, `truncated`, `seed`, `model`, `extractor`, `group_by_vibes_version`, and `sqlglot_version`.
 
 ## Comparative Evaluation Report (SQLite, Full Split, n=500)
 
@@ -96,17 +96,34 @@ Evaluation on `birdsql/bird_mini_dev` (`sqlite`, `n = 500`): `griffith-bigdata/F
 | **Length Ratio / Brevity Penalty** | `0.636` / `0.564` | `0.667` / `0.607` | `0.665` / `0.604` |
 | **Per-example SQL-BLEU (min / p25 / median / mean / p75 / max)** | `0.0004 / 0.1431 / 0.2539 / 0.2874 / 0.3967 / 1.0000` | `0.0013 / 0.0948 / 0.1961 / 0.2351 / 0.3177 / 1.0000` | `0.0004 / 0.0895 / 0.1640 / 0.2074 / 0.2695 / 1.0000` |
 | **Exact Canonical Matches (`BLEU = 1.0`)** | `1` | `1` | `1` |
+| **Exact Match Accuracy** | `1.2%` (`6/500`) | `1.2%` (`6/500`) | `0.8%` (`4/500`) |
 | **Valid SQL Rate** | `84.2%` (`421/500`) | `56.2%` (`281/500`) | `73.6%` (`368/500`) |
 | **Wildcard Rate (`SELECT *`)** | `0.0%` (`0/495`) | `0.0%` (`0/478`) | `0.0%` (`0/494`) |
 | **Truncated Completions** | `4` | `1` | `2` |
 
+### Component Matching F1
+
+| Component | `griffith-bigdata/FINER-SQL-3B-v2` | `Qwen/Qwen2.5-Coder-3B-Instruct` | `XGenerationLab/XiYanSQL-QwenCoder-3B-2504` |
+| --- | ---: | ---: | ---: |
+| `select` | `0.279` | `0.219` | `0.245` |
+| `select(no AGG)` | `0.281` | `0.219` | `0.254` |
+| `where` | `0.126` | `0.102` | `0.097` |
+| `where(no OP)` | `0.155` | `0.129` | `0.121` |
+| `group(no Having)` | `0.420` | `0.352` | `0.389` |
+| `group` | `0.303` | `0.215` | `0.253` |
+| `order` | `0.097` | `0.085` | `0.092` |
+| `and/or` | `0.640` | `0.655` | `0.612` |
+| `IUEN` | `0.000` | `0.000` | `0.000` |
+| `keywords` | `0.241` | `0.271` | `0.247` |
+| `cte` | `0.000` | `0.000` | `0.000` |
+
 ### Breakdown by Difficulty
 
-| Difficulty | Rows | FINER-SQL SQL-BLEU | Qwen SQL-BLEU | XiYanSQL SQL-BLEU | FINER-SQL Valid SQL | Qwen Valid SQL | XiYanSQL Valid SQL |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `simple` | 8 | `0.3549` | `0.3167` | `0.2906` | `87.5%` (`7`) | `87.5%` (`7`) | `100.0%` (`8`) |
-| `moderate` | 32 | `0.3058` | `0.2783` | `0.2526` | `96.9%` (`31`) | `71.9%` (`23`) | `87.5%` (`28`) |
-| `challenging` | 460 | `0.2619` | `0.2091` | `0.1765` | `83.3%` (`383`) | `54.6%` (`251`) | `72.2%` (`332`) |
+| Difficulty | Rows | FINER-SQL SQL-BLEU | Qwen SQL-BLEU | XiYanSQL SQL-BLEU | FINER-SQL Valid SQL | Qwen Valid SQL | XiYanSQL Valid SQL | FINER-SQL Exact Match | Qwen Exact Match | XiYanSQL Exact Match |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `simple` | 8 | `0.3549` | `0.3167` | `0.2906` | `87.5%` (`7`) | `87.5%` (`7`) | `100.0%` (`8`) | `12.5%` (`1`) | `25.0%` (`2`) | `12.5%` (`1`) |
+| `moderate` | 32 | `0.3058` | `0.2783` | `0.2526` | `96.9%` (`31`) | `71.9%` (`23`) | `87.5%` (`28`) | `6.2%` (`2`) | `3.1%` (`1`) | `0.0%` (`0`) |
+| `challenging` | 460 | `0.2619` | `0.2091` | `0.1765` | `83.3%` (`383`) | `54.6%` (`251`) | `72.2%` (`332`) | `0.7%` (`3`) | `0.7%` (`3`) | `0.7%` (`3`) |
 
 ### Breakdown by Database
 
@@ -150,8 +167,9 @@ Evaluation on `birdsql/bird_mini_dev` (`sqlite`, `n = 500`): `griffith-bigdata/F
 
 ### Key Comparative Takeaways
 
-1. **`FINER-SQL` leads both `Valid SQL Rate` (`84.2%`, `421/500`) and `SQL-BLEU` (`0.2646`):** Across the identical `500` SQLite questions, `FINER-SQL` outpaces `XiYanSQL` (`73.6%`, `+10.6 pp` / `+53` valid queries) and `Qwen` (`56.2%`, `+28.0 pp` / `+140` valid queries) on `Valid SQL Rate`, while also leading `SQL-BLEU` over `Qwen` (`0.2130`, `+0.0516`) and `XiYanSQL` (`0.1807`, `+0.0839`) across all `11` databases and all `3` difficulty tiers. On `Valid SQL Rate`, `FINER-SQL` leads or ties on `10` of `11` databases (including `100.0%` on `student_club` and `96.9%` on `toxicology`), trailing `XiYanSQL` only on `california_schools` (`46.9%` vs `55.1%`) and the `8`-row `simple` slice (`87.5%` vs `100.0%`).
-2. **Error reduction and 3-way agreement:** `FINER-SQL` cuts `unknown_column` failures to `67` (vs `121` for `XiYanSQL` and `184` for `Qwen`), matches `XiYanSQL` on low `syntax_error` counts (`5` each vs `19` for `Qwen`), and records `0` `multi_statement` or `extraction_failed` errors (`unknown_table`: `7` vs `5` for `XiYanSQL` and `13` for `Qwen`). Across all `500` questions, `221` (`44.2%`) pass for all three models, `37` (`7.4%`) fail for all three, and `FINER-SQL` uniquely passes `51` queries (`10.2%`) where both `Qwen` and `XiYanSQL` fail (vs `24` unique passes for `XiYanSQL` and `2` for `Qwen`); head-to-head on `Valid SQL Rate`, `FINER-SQL` beats `XiYanSQL` `93` to `40` (`328` both valid) and beats `Qwen` `158` to `18` (`263` both valid). On per-example `SQL-BLEU`, `FINER-SQL` holds the sole top score on `249` questions (`49.8%`) vs `129` (`25.8%`) for `Qwen`, `108` (`21.6%`) for `XiYanSQL`, and `14` ties (`2.8%`).
-3. **SQL style drives n-gram precision differences:** `FINER-SQL` avoids synthetic `T1`/`T2` aliases (`0.0%` vs `57.2%` for `Qwen`, `85.4%` for `XiYanSQL`, `18.6%` in gold) and explicit `INNER JOIN` boilerplate (`0.0%` vs `7.2%` for `Qwen`, `69.6%` for `XiYanSQL`, `25.8%` in gold), lifting `SQL-BLEU` n-gram precisions at every order (`0.782 / 0.551 / 0.397 / 0.283` vs `0.714 / 0.447 / 0.278 / 0.171` for `Qwen` and `0.677 / 0.398 / 0.230 / 0.129` for `XiYanSQL`) despite emitting the shortest queries (`244.1` chars, brevity penalty `0.564`). Between `Qwen` and `XiYanSQL`, that same alias and join verbosity explains why `Qwen` retains a higher `SQL-BLEU` (`0.2130` vs `0.1807`) despite lower `Valid SQL Rate` (`56.2%` vs `73.6%`).
-4. **Shared structural brevity and zero wildcards:** All three 3B models emit ~33–36% fewer AST tokens than gold SQL (`length_ratio` `0.636`–`0.667`, `brevity_penalty` `0.564`–`0.607`), rarely generating `WITH` CTEs (`0.2%`–`0.6%` vs `30.0%` in gold) or `CAST(...)` expressions (`2.2%`–`7.8%` vs `29.0%` in gold), and all three emit `0.0%` projection wildcards (`SELECT *`). All `4` truncated `FINER-SQL` completions still extract to valid SQL via `extract_fenced_or_last_sql` because a fenced SQL block appears before trailing reasoning hits `max_new_tokens`.
-5. **Metric complementarity:** `Valid SQL Rate` and `SQL-BLEU` capture orthogonal signals—schema grounding vs. clause and lexical similarity to reference SQL (as seen in the `Qwen` vs `XiYanSQL` split, while `FINER-SQL` improves both)—and complement execution accuracy (`EX`).
+1. **`FINER-SQL` leads `Valid SQL Rate` (`84.2%`, `421/500`), `SQL-BLEU` (`0.2646`), and major structural component clauses:** Across the identical `500` SQLite questions, `FINER-SQL` outpaces `XiYanSQL` (`73.6%`, `+10.6 pp` / `+53` valid queries) and `Qwen` (`56.2%`, `+28.0 pp` / `+140` valid queries) on `Valid SQL Rate`, leads `SQL-BLEU` over `Qwen` (`0.2130`, `+0.0516`) and `XiYanSQL` (`0.1807`, `+0.0839`), and posts the highest `Component Matching` F1 on `select` (`0.279` vs `0.245` / `0.219`), `select(no AGG)` (`0.281`), `where` (`0.126`), `where(no OP)` (`0.155`), `group(no Having)` (`0.420`), `group` (`0.303`), and `order` (`0.097`). `Qwen` leads on `and/or` (`0.655` vs `0.640` / `0.612`) and `keywords` (`0.271` vs `0.241` / `0.247`), while all three models score `0.000` F1 on `IUEN` and `cte` (consistent with emitting `0.2%`–`0.6%` CTEs against `30.0%` in gold SQL).
+2. **`Exact Match Accuracy` stays near `1%` across all three 3B models (`bird_mini_dev` `0.8%`–`1.2%`):** `FINER-SQL` and `Qwen` tie overall at `1.2%` (`6/500`), ahead of `XiYanSQL` at `0.8%` (`4/500`), with `reference_parse_success_rate = 1.0` (`500/500` gold queries decomposed across all three runs). By difficulty, `Qwen` reaches `25.0%` (`2/8`) on `simple`, `FINER-SQL` reaches `6.2%` (`2/32`) on `moderate`, and all three match on `0.7%` (`3/460`) on `challenging` (`92%` of the split). Even under Spider value-blind defaults (`ignore_values=True`), BIRD queries mix multi-table joins, nested conditionals (`CASE`/`IIF`), literal arithmetic (`1.0 * a / b`), and CTEs (`30.0%`), so structural AST skeletons rarely align end-to-end despite higher clause-level F1 on `select` and `group`. Note that the checked-in `v0.0.1` `500`-row JSONL logs predate DDL `foreign_keys` extraction (`foreign_keys_applied_count == 0`), unlike newly generated logs.
+3. **Error reduction and 3-way agreement:** `FINER-SQL` cuts `unknown_column` failures to `67` (vs `121` for `XiYanSQL` and `184` for `Qwen`), matches `XiYanSQL` on low `syntax_error` counts (`5` each vs `19` for `Qwen`), and records `0` `multi_statement` or `extraction_failed` errors (`unknown_table`: `7` vs `5` for `XiYanSQL` and `13` for `Qwen`). Across all `500` questions, `221` (`44.2%`) pass for all three models, `37` (`7.4%`) fail for all three, and `FINER-SQL` uniquely passes `51` queries (`10.2%`) where both `Qwen` and `XiYanSQL` fail (vs `24` unique passes for `XiYanSQL` and `2` for `Qwen`); head-to-head on `Valid SQL Rate`, `FINER-SQL` beats `XiYanSQL` `93` to `40` (`328` both valid) and beats `Qwen` `158` to `18` (`263` both valid). On per-example `SQL-BLEU`, `FINER-SQL` holds the sole top score on `249` questions (`49.8%`) vs `129` (`25.8%`) for `Qwen`, `108` (`21.6%`) for `XiYanSQL`, and `14` ties (`2.8%`).
+4. **SQL style drives n-gram precision differences:** `FINER-SQL` avoids synthetic `T1`/`T2` aliases (`0.0%` vs `57.2%` for `Qwen`, `85.4%` for `XiYanSQL`, `18.6%` in gold) and explicit `INNER JOIN` boilerplate (`0.0%` vs `7.2%` for `Qwen`, `69.6%` for `XiYanSQL`, `25.8%` in gold), lifting `SQL-BLEU` n-gram precisions at every order (`0.782 / 0.551 / 0.397 / 0.283` vs `0.714 / 0.447 / 0.278 / 0.171` for `Qwen` and `0.677 / 0.398 / 0.230 / 0.129` for `XiYanSQL`) despite emitting the shortest queries (`244.1` chars, brevity penalty `0.564`). Between `Qwen` and `XiYanSQL`, that same alias and join verbosity explains why `Qwen` retains a higher `SQL-BLEU` (`0.2130` vs `0.1807`) despite lower `Valid SQL Rate` (`56.2%` vs `73.6%`).
+5. **Shared structural brevity and zero wildcards:** All three 3B models emit ~33–36% fewer AST tokens than gold SQL (`length_ratio` `0.636`–`0.667`, `brevity_penalty` `0.564`–`0.607`), rarely generating `WITH` CTEs (`0.2%`–`0.6%` vs `30.0%` in gold) or `CAST(...)` expressions (`2.2%`–`7.8%` vs `29.0%` in gold), and all three emit `0.0%` projection wildcards (`SELECT *`). All `4` truncated `FINER-SQL` completions still extract to valid SQL via `extract_fenced_or_last_sql` because a fenced SQL block appears before trailing reasoning hits `max_new_tokens`.
+6. **Metric complementarity:** `Valid SQL Rate`, `SQL-BLEU`, `ComponentMatching`, and `ExactMatching` capture orthogonal signals—schema grounding vs. AST token overlap vs. per-clause F1 vs. whole-query structural equivalence—and complement execution accuracy (`EX`).
