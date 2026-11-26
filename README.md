@@ -4,6 +4,7 @@
 
 # group-by-vibes
 
+[![PyPI](https://img.shields.io/pypi/v/group-by-vibes)](https://pypi.org/project/group-by-vibes/)
 [![CI](https://img.shields.io/github/actions/workflow/status/felipepenha/group-by-vibes/ci.yml?branch=main&label=CI)](https://github.com/felipepenha/group-by-vibes/actions/workflows/ci.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-6c6ef5)](https://felipepenha.github.io/group-by-vibes/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://github.com/felipepenha/group-by-vibes/blob/main/pyproject.toml)
@@ -36,10 +37,10 @@ Requires Python `>=3.10`.
 
 ```bash
 # With uv
-uv add git+https://github.com/felipepenha/group-by-vibes.git
+uv add group-by-vibes
 
 # Or with pip
-pip install git+https://github.com/felipepenha/group-by-vibes.git
+pip install group-by-vibes
 ```
 
 Core installation pulls only `sqlglot>=30.0.0,<31.0.0`. For optional benchmark inference utilities under [`examples/`](https://github.com/felipepenha/group-by-vibes/blob/main/examples/README.md):

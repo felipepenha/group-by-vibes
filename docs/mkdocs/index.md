@@ -22,10 +22,10 @@ Requires **Python `>=3.10`**. Core installation pulls only `sqlglot>=30.0.0,<31.
 
 ```bash
 # With uv
-uv add git+https://github.com/felipepenha/group-by-vibes.git
+uv add group-by-vibes
 
 # Or with pip
-pip install git+https://github.com/felipepenha/group-by-vibes.git
+pip install group-by-vibes
 ```
 
 ## Quickstart
