@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-11-25
+
 ### Added
 
 - **Release & Documentation Sync Skills (`.agents/skills/`):** Added `release` (`.agents/skills/release/scripts/release.py`) and `sync-docs` (`.agents/skills/sync-docs/scripts/sync_docs.py`) workspace skills with offline unit tests (`tests/test_release_and_sync_docs.py`), widened CI `ruff` linting to `.agents/skills/`, and wired `sync_docs.py verify` into `.github/workflows/ci.yml`.
@@ -45,3 +47,6 @@ Initial public pre-release of **group-by-vibes** — a standalone, `sqlglot`-onl
 [Unreleased]: https://github.com/felipepenha/group-by-vibes/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/felipepenha/group-by-vibes/compare/v0.0.1...v0.1.0
 [0.0.1]: https://github.com/felipepenha/group-by-vibes/releases/tag/v0.0.1
+
+[Unreleased]: https://github.com/felipepenha/group-by-vibes/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/felipepenha/group-by-vibes/compare/v0.1.2...v0.1.3
