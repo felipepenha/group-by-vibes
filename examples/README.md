@@ -82,7 +82,7 @@ Evaluation on `birdsql/bird_mini_dev` (`sqlite`, `n = 500`): `griffith-bigdata/F
 
 * **Dataset & Split:** `birdsql/bird_mini_dev` (`sqlite`, full `500` rows: `460` challenging, `32` moderate, `8` simple across `11` databases)
 * **Models Compared:** `griffith-bigdata/FINER-SQL-3B-v2` vs. `Qwen/Qwen2.5-Coder-3B-Instruct` vs. `XGenerationLab/XiYanSQL-QwenCoder-3B-2504`
-* **Extractor & Versions:** `extract_fenced_or_last_sql`, `group_by_vibes` `0.1.0`, `sqlglot` `30.33.0`
+* **Extractor & Versions:** `extract_fenced_or_last_sql`, `group_by_vibes` `0.1.3`, `sqlglot` `30.33.0`
 * **Score Reports:** `examples/logs/bird_finer_sql_3b_scores.json`, `examples/logs/bird_qwen_3b_scores.json`, `examples/logs/bird_xiyansql_3b_scores.json`
 
 ### Headline Comparison
